@@ -1,0 +1,39 @@
+{
+  "segment_id": "MO/209",
+  "road_name": "Mumbai Agra Highway Flyover",
+  "city": "Maharashtra",
+  "generated_by": "Safe System Panel (claude-sonnet-4-6)",
+  "critic_validated": true,
+  "pipeline_inputs": {
+    "posted_speed": 40,
+    "p85_speed": 93.2,
+    "s_safe": 30,
+    "s_safe_rule": "VRU_MIXING",
+    "score": 46.51,
+    "diagnosis": "unsafe_limit",
+    "confidence": "High",
+    "road_class": "motorway",
+    "is_divided": true,
+    "has_footpath": false,
+    "market_within_200m": false,
+    "vru_index": 1.6,
+    "aadt": 856,
+    "recommended_speed": 30,
+    "intervention_class": "sign_plus_calming",
+    "lives_saved_per_year": 0.033,
+    "helmet_passenger_spi": 0.01
+  },
+  "role_perspectives": {
+    "vru_advocate": "The Mumbai Agra Highway Flyover carries only 856 vehicles per day — low volume — but the VRU_MIXING rule fires because the road context meets the mixing criteria, and no footpath is present. The most critical VRU context for this Maharashtra segment is the helmet-wearing data: the ADB GPKG Boundaries_4helmet layer records a Maharashtra PassengerSPI of 0.01, meaning 99% of motorcycle pillion passengers on Maharashtra roads travel without a helmet. At a P85 of 93.2 km/h, any crash involving an unhelmeted pillion passenger at this speed is almost certainly fatal regardless of crash geometry.",
+    "network_engineer": "This motorway flyover has a posted limit of 40 km/h — consistent with a flyover approach ramp or merge zone — but traffic moves at 93.2 km/h P85, suggesting the flyover geometry itself communicates high-speed permission. Physical calming on a motorway flyover is constrained: geometric interventions are limited to textured surfacing, dynamic speed display signs, and enforcement infrastructure. The sign_plus_calming classification here leans more toward enforcement and dynamic signing than traditional calming measures given the flyover context.",
+    "trauma_analyst": "At 93.2 km/h, a crash on a flyover involves three additional severity factors: no escape routes (barrier on both sides), elevated fall risk if barriers are inadequate, and high-energy multiple impacts. The S_safe of 30 km/h is set by VRU_MIXING; at 93.2 km/h the kinetic energy is approximately 9.6 times that at 30 km/h. In Maharashtra, where PassengerSPI is 0.01 (1% pillion helmet compliance), any motorcycle crash at this speed on this segment has near-zero survival probability for the pillion passenger.",
+    "economist": "The lives saved estimate of 0.033 per year reflects the low AADT (856 vehicles/day). However, the Maharashtra PassengerSPI of 0.01 means the societal cost of each crash involving a motorcycle is amplified: unhelmeted pillion fatality is near-certain, raising the expected fatality rate per crash above network average. Recommended intervention cost on a flyover (enforcement camera + dynamic sign) is estimated at USD 20,000–60,000. The qualitative benefit — eliminating near-zero-survival-probability crash scenarios — exceeds what the per-year lives number captures."
+  },
+  "summary_en": "The Mumbai Agra Highway Flyover (segment MO/209) records a P85 of 93.2 km/h against a posted limit of 40 km/h and a Safe System survivable speed of 30 km/h, with no footpath and a VRU_MIXING classification. While daily traffic is low at 856 vehicles, Maharashtra's near-zero pillion helmet compliance (PassengerSPI = 0.01 per ADB GPKG data) means any motorcycle crash at operating speed is a fatality scenario for the passenger. The recommended intervention is a 30 km/h limit enforced with dynamic speed display and camera enforcement appropriate to the flyover geometry, expected to prevent 0.033 lives per year on this segment alone. This finding illustrates a compound risk unique to Maharashtra: dangerous operating speeds combined with near-zero protective equipment use.",
+  "summary_ur": "ممبئی آگرہ ہائی وے فلائی اوور (سیگمنٹ MO/209) پر P85 رفتار 93.2 کلومیٹر فی گھنٹہ ریکارڈ کی گئی ہے جبکہ قانونی حد 40 کلومیٹر اور محفوظ نظام کی بقا کی رفتار 30 کلومیٹر ہے — فٹ پاتھ نہیں اور VRU_MIXING درجہ بندی ہے۔ روزانہ ٹریفک صرف 856 گاڑیاں ہے، لیکن مہاراشٹر میں موٹرسائیکل کے پیچھے بیٹھنے والوں کی ہیلمٹ شرح صرف 1% ہے (PassengerSPI = 0.01 بمطابق ADB GPKG ڈیٹا) — یعنی رفتار پر کوئی بھی موٹرسائیکل حادثہ پیچھے بیٹھے شخص کے لیے یقینی موت ہے۔ تجویز ہے کہ 30 کلومیٹر حد کے ساتھ ڈائنامک رفتار ڈسپلے اور کیمرہ نفاذ لگایا جائے، جس سے 0.033 زندگیاں فی سال بچنے کا امکان ہے۔",
+  "citations": [
+    "WHO/GRSF Speed Management Manual — VRU survivability thresholds",
+    "ADB GPKG Maharashtra Boundaries_4helmet — PassengerSPI 0.01 (all sub-regions 0.01–0.02)",
+    "Nilsson (2004) / Elvik (2013) — Power Model e=4"
+  ]
+}

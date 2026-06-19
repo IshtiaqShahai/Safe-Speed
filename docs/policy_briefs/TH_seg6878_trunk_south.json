@@ -1,0 +1,38 @@
+{
+  "segment_id": "6878",
+  "road_name": "Trunk Road (southern Thailand)",
+  "city": "Thailand",
+  "generated_by": "Safe System Panel (claude-sonnet-4-6)",
+  "critic_validated": true,
+  "pipeline_inputs": {
+    "posted_speed": 50,
+    "p85_speed": 85,
+    "s_safe": 30,
+    "s_safe_rule": "VRU_MIXING",
+    "score": 100.0,
+    "diagnosis": "unsafe_limit",
+    "confidence": "High",
+    "road_class": "trunk",
+    "is_divided": true,
+    "has_footpath": false,
+    "market_within_200m": true,
+    "vru_index": 1.6,
+    "aadt": 30607,
+    "recommended_speed": 30,
+    "intervention_class": "sign_plus_calming",
+    "lives_saved_per_year": 0.091
+  },
+  "role_perspectives": {
+    "vru_advocate": "Southern Thailand's trunk road network includes this segment (6878) where 30,607 daily vehicles pass a market within 200 m with no footpath provision. The 85th-percentile operating speed of 85 km/h is 55 km/h above the S_safe of 30 km/h set by VRU_MIXING. In southern Thailand's motorcycle-dominant traffic culture, pillion passengers are a major VRU group — and the ADB GPKG data records a Thailand PassengerSPI of 0.705, meaning 29.5% of motorcycle passengers travel without a helmet, making any crash at 85 km/h near-certainly fatal for them.",
+    "network_engineer": "The P85 of 85 km/h on a divided trunk road with a 50 km/h posted limit indicates that the road geometry is communicating a design speed higher than the regulatory limit. The VRU_MIXING context (market within 200 m, no footpath) demands physical separation between high-speed through-traffic and market-access movements. Recommended measures: access management at the market entry point, speed tables 200 m either side of the market zone, and posted limit reduction to 30 km/h. A sign_plus_calming classification reflects the need for physical as well as regulatory intervention.",
+    "trauma_analyst": "At 85 km/h, a lateral pedestrian impact delivers kinetic energy approximately 8 times higher than at 30 km/h. The 50% fatality threshold for unprotected pedestrians is approximately 45 km/h (WHO/GRSF); at 85 km/h this is a near-certain fatality scenario. The posted limit of 50 km/h is already above S_safe (30 km/h), but the operating speed gap is the more critical concern: a 55 km/h excess above the survivable speed represents extreme biomechanical risk for any pedestrian or unhelmeted motorcyclist.",
+    "economist": "This segment has the highest estimated lives saved of the four Thailand high-priority cases shown here: 0.091 per year. At USD 1 million value of statistical life, annual benefit is USD 91,000. A sign_plus_calming intervention at this location (access management + speed tables) is estimated at USD 30,000–80,000, implying payback in under 1 year. The 30,607 daily AADT is lower than the Kanchanaphisek Road case but the VRU exposure is comparable due to the market proximity."
+  },
+  "summary_en": "Segment 6878, a divided trunk road in southern Thailand, posts 50 km/h but records a P85 of 85 km/h — nearly three times the Safe System survivable speed of 30 km/h at this VRU_MIXING location where a market is present within 200 m and no footpath exists. With 30,607 daily vehicles and a Thailand motorcycle passenger helmet-wearing rate of 70.5% (meaning roughly 9,000 daily unhelmeted pillion passenger exposures at network scale), the consequence of crashes at operating speed is predictably fatal. The recommended intervention is a 30 km/h limit with physical calming measures at the market zone, expected to prevent 0.091 lives per year — the highest return of any segment in this panel review.",
+  "summary_ur": "تھائی لینڈ کے جنوب میں سیگمنٹ 6878، ایک منقسم ٹرنک روڈ، کی قانونی حد 50 کلومیٹر فی گھنٹہ ہے مگر P85 رفتار 85 کلومیٹر ریکارڈ کی گئی — جو VRU_MIXING مقام پر محفوظ نظام کی 30 کلومیٹر بقا کی رفتار سے تقریباً تین گنا ہے، جہاں 200 میٹر کے اندر بازار موجود ہے اور کوئی فٹ پاتھ نہیں۔ 30,607 روزانہ گاڑیوں اور تھائی لینڈ میں موٹرسائیکل پر پیچھے بیٹھنے والوں کی ہیلمٹ شرح 70.5% کے ساتھ، رفتار پر حادثے کا نتیجہ یقینی طور پر مہلک ہے۔ تجویز ہے کہ 30 کلومیٹر فی گھنٹہ حد کے ساتھ بازار کے علاقے میں جسمانی سکون اقدامات کیے جائیں — یہ 0.091 زندگیاں فی سال بچانے کا امکان رکھتا ہے۔",
+  "citations": [
+    "WHO/GRSF Speed Management Manual — 30/50/70/80 km/h survivability thresholds",
+    "ADB GPKG Thailand_Province_Boundaries — PassengerSPI 0.705",
+    "Nilsson (2004) / Elvik (2013) — Power Model e=4"
+  ]
+}

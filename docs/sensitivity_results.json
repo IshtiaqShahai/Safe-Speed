@@ -1,0 +1,51 @@
+{
+  "sensitivity": {
+    "T+10": {
+      "rho": 0.9327,
+      "description": "S_safe thresholds +10 km/h"
+    },
+    "T-10": {
+      "rho": 0.9703,
+      "description": "S_safe thresholds -10 km/h"
+    },
+    "W1+50%": {
+      "rho": 0.9966,
+      "description": "w1 \u00d7 1.5 (0.90), w2 unchanged"
+    },
+    "W1-50%": {
+      "rho": 0.9853,
+      "description": "w1 \u00d7 0.5 (0.30), w2 unchanged"
+    },
+    "BUF+100m": {
+      "rho": 0.8821,
+      "rho_min": 0.7923,
+      "rho_max": 0.9408,
+      "description": "VRU buffers +100 m (Monte Carlo, n=10)"
+    },
+    "BUF-100m": {
+      "rho": 0.9643,
+      "rho_min": 0.8847,
+      "rho_max": 1.0,
+      "description": "VRU buffers -100 m (Monte Carlo, n=10)"
+    }
+  },
+  "sign_detection": {
+    "total_segments": 40,
+    "sign_conflicts": 1,
+    "agreement_pct": 97.5,
+    "conflicting_segment_confidence": {
+      "Low": 1
+    },
+    "note": "Segments with sign conflicts are down-weighted to Medium/Low confidence (enforced in core/scoring.py::grade_confidence)."
+  },
+  "irap_proxy": {
+    "n_segments": 40,
+    "irap_1_2_star_count": 18,
+    "panel_high_priority_count": 7,
+    "agreement_tp": 5,
+    "precision_pct": 71.4,
+    "recall_pct": 27.8,
+    "spearman_rho_irap_vs_score": 0.515,
+    "note": "iRAP stars are a PROXY derived from segment features, not official ratings. Replace df['proxy_irap_stars'] with actual iRAP field data when available."
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "segment_id": "TR/13361",
+  "road_name": "Malegaon Bypass",
+  "city": "Maharashtra",
+  "generated_by": "Safe System Panel (claude-sonnet-4-6)",
+  "critic_validated": true,
+  "pipeline_inputs": {
+    "posted_speed": 50,
+    "p85_speed": 76.9,
+    "s_safe": 30,
+    "s_safe_rule": "VRU_MIXING",
+    "score": 39.05,
+    "diagnosis": "unsafe_limit",
+    "confidence": "High",
+    "road_class": "trunk",
+    "is_divided": true,
+    "has_footpath": false,
+    "market_within_200m": false,
+    "vru_index": 1.6,
+    "aadt": 954,
+    "recommended_speed": 30,
+    "intervention_class": "sign_plus_calming",
+    "lives_saved_per_year": 0.515,
+    "helmet_passenger_spi": 0.01
+  },
+  "role_perspectives": {
+    "vru_advocate": "The Malegaon Bypass is a divided trunk road with a VRU_MIXING classification and an AADT of 954 vehicles per day — modest volume, but the highest lives-saved estimate among all Maharashtra segments reviewed: 0.515 per year. This reflects the VRU exposure index of 1.6 and the compound vulnerability of Maharashtra's motorcycle users: PassengerSPI of 0.01 means 99 out of every 100 pillion passengers travel without a helmet. Even at the posted speed of 50 km/h — itself above S_safe — a crash involving an unhelmeted pillion passenger on a bypass road far from emergency medical care is catastrophic.",
+    "network_engineer": "The bypass geometry (divided trunk, likely straight alignment) communicates high design speed and encourages the observed P85 of 76.9 km/h on a 50 km/h posted road. The bypass context means limited adjacent development, which reduces some VRU sources but does not eliminate them — the VRU_MIXING rule fired on contextual grounds (traffic characteristics meeting the PTW-share threshold). For a bypass road, the most effective physical intervention is a median barrier upgrade (if not already fully sealed) and roadside clearing to improve errant-vehicle recovery distance, combined with a 30 km/h limit and rumble strips as speed transition markers.",
+    "trauma_analyst": "At P85 = 76.9 km/h, crash severity is substantially above survivable. The 50% fatality threshold for unhelmeted motorcycle occupants is considerably lower than for car occupants; at 76.9 km/h an unhelmeted pillion passenger has near-zero survival probability in any ejection or collision scenario. The gap between P85 (76.9 km/h) and S_safe (30 km/h) is 46.9 km/h — the kinetic energy ratio is (76.9/30)² ≈ 6.6 times, meaning the fatal energy threshold is exceeded by a factor of six compared to the survivable speed.",
+    "economist": "With 0.515 lives saved per year, the Malegaon Bypass is the highest-impact segment in the Maharashtra review — despite low AADT of 954 — because the compound vulnerability (VRU_MIXING + near-zero helmet compliance) substantially raises the expected fatality rate per crash. At USD 1 million value of statistical life, annual benefit is USD 515,000. A sign_plus_calming intervention on a bypass trunk road is estimated at USD 40,000–100,000, implying payback in under 1 year. This represents exceptional return on investment and should be a pilot intervention for Maharashtra's highway authority."
+  },
+  "summary_en": "The Malegaon Bypass (segment TR/13361) is the highest-priority segment identified in Maharashtra: despite only 954 daily vehicles, the compound of a P85 of 76.9 km/h against an S_safe of 30 km/h, a VRU_MIXING classification, and Maharashtra's near-zero motorcycle pillion helmet compliance (PassengerSPI = 0.01 per ADB GPKG) produces an estimated 0.515 lives saved per year — the single largest per-segment return in the regional analysis. The bypass geometry invites operating speeds above the posted 50 km/h limit; a reduction to 30 km/h with physical calming and median sealing is recommended. Maharashtra's highway authority should treat this segment as the pilot intervention for Safe System implementation in the Nashik district, given its exceptional benefit-cost ratio.",
+  "summary_ur": "ملیگاؤں بائی پاس (سیگمنٹ TR/13361) مہاراشٹر میں شناخت کردہ سب سے زیادہ ترجیحی سیگمنٹ ہے: صرف 954 روزانہ گاڑیوں کے باوجود، P85 رفتار 76.9 کلومیٹر مقابلہ S_safe 30 کلومیٹر، VRU_MIXING درجہ بندی، اور مہاراشٹر میں موٹرسائیکل پیچھے بیٹھنے والوں کی تقریباً صفر ہیلمٹ شرح (PassengerSPI = 0.01 بمطابق ADB GPKG) مل کر 0.515 زندگیاں فی سال بچانے کا اندازہ پیش کرتے ہیں — علاقائی تجزیے میں سب سے زیادہ فی سیگمنٹ فائدہ۔ تجویز ہے کہ 30 کلومیٹر حد کے ساتھ جسمانی سکون اقدامات اور میڈین سیلنگ کی جائے۔ مہاراشٹر کے ہائی وے اتھارٹی کو اسے ناسک ضلع میں محفوظ نظام کے آغاز کے لیے پائلٹ مقام بنانا چاہیے۔",
+  "citations": [
+    "WHO/GRSF Speed Management Manual — VRU survivability at 30/50 km/h",
+    "ADB GPKG Maharashtra Boundaries_4helmet — PassengerSPI 0.01 (all sub-regions 0.01–0.02)",
+    "Nilsson (2004) / Elvik (2013) — Power Model e=4",
+    "Orsi et al. (2025) arXiv:2507.04434 — sign-only insufficient for operating-speed reduction"
+  ]
+}

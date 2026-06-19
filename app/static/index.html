@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SafeSpeed — A Digital Safe System Panel by Ventax AI Lab</title>
+  <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@3.6.2/dist/maplibre-gl.css"/>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', sans-serif; background: #0f1117; color: #e2e8f0; display: flex; flex-direction: column; height: 100vh; }
+
+    /* ── Header ── */
+    header { background: #1a1d2e; padding: 12px 20px; display: flex; align-items: center; gap: 16px; border-bottom: 1px solid #2d3148; z-index: 10; }
+    header h1 { font-size: 1rem; font-weight: 600; color: #7dd3fc; }
+    header .badge { font-size: 0.7rem; background: #1e3a5f; color: #93c5fd; padding: 2px 8px; border-radius: 999px; }
+    header .spacer { flex: 1; }
+    .btn-upload { background: #1d4ed8; color: #fff; border: none; padding: 6px 14px; border-radius: 7px; font-size: 0.75rem; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 6px; }
+    .btn-upload:hover { background: #2563eb; }
+    .header-stats { display: flex; gap: 16px; font-size: 0.75rem; }
+    .header-stat { text-align: center; }
+    .header-stat .val { font-size: 1.1rem; font-weight: 700; color: #f1f5f9; }
+    .header-stat .lbl { color: #94a3b8; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.05em; }
+
+    /* ── Layout ── */
+    .main { display: flex; flex: 1; overflow: hidden; }
+    #map { flex: 1; }
+
+    /* ── Sidebar ── */
+    #sidebar { width: 340px; background: #1a1d2e; overflow-y: auto; border-left: 1px solid #2d3148; display: flex; flex-direction: column; }
+    .sidebar-tabs { display: flex; border-bottom: 1px solid #2d3148; }
+    .tab-btn { flex: 1; padding: 10px; background: none; border: none; color: #64748b; font-size: 0.75rem; cursor: pointer; border-bottom: 2px solid transparent; transition: all .2s; }
+    .tab-btn.active { color: #7dd3fc; border-bottom-color: #7dd3fc; }
+    .tab-content { display: none; padding: 14px; flex: 1; }
+    .tab-content.active { display: block; }
+
+    /* ── Segment card ── */
+    .score-ring { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+    .ring-circle { width: 64px; height: 64px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; font-weight: 800; border: 4px solid; }
+    .seg-title { font-weight: 600; font-size: 0.9rem; }
+    .seg-sub { font-size: 0.72rem; color: #94a3b8; margin-top: 2px; }
+
+    .diagnosis-badge { display: inline-flex; align-items: center; gap: 5px; padding: 3px 10px; border-radius: 999px; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 12px; }
+
+    .speeds-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-bottom: 12px; }
+    .speed-box { background: #0f1117; border-radius: 8px; padding: 8px; text-align: center; }
+    .speed-box .sv { font-size: 1.3rem; font-weight: 700; }
+    .speed-box .sl { font-size: 0.6rem; color: #94a3b8; text-transform: uppercase; }
+
+    .info-row { display: flex; justify-content: space-between; padding: 5px 0; border-bottom: 1px solid #2d3148; font-size: 0.75rem; }
+    .info-row .key { color: #94a3b8; }
+    .info-row .val { font-weight: 500; }
+
+    .rule-chip { background: #1e2d4a; color: #93c5fd; padding: 4px 8px; border-radius: 6px; font-size: 0.65rem; margin-top: 8px; display: inline-block; }
+    .brief-box { background: #0f1117; border-radius: 8px; padding: 10px; font-size: 0.72rem; line-height: 1.6; color: #cbd5e1; margin-top: 10px; }
+
+    /* ── Simulator panel ── */
+    .sim-form label { font-size: 0.72rem; color: #94a3b8; display: block; margin-bottom: 3px; }
+    .sim-form input, .sim-form select { width: 100%; background: #0f1117; border: 1px solid #2d3148; border-radius: 6px; color: #e2e8f0; padding: 6px 10px; font-size: 0.8rem; margin-bottom: 10px; }
+    .btn-run { width: 100%; background: #1d4ed8; color: #fff; border: none; padding: 9px; border-radius: 8px; font-size: 0.8rem; font-weight: 600; cursor: pointer; }
+    .btn-run:hover { background: #2563eb; }
+    .sim-result { background: #0f1117; border-radius: 8px; padding: 10px; margin-top: 10px; }
+    .sim-row { display: flex; justify-content: space-between; padding: 4px 0; font-size: 0.75rem; }
+
+    /* ── Legend ── */
+    #legend { position: absolute; bottom: 28px; left: 12px; background: rgba(26,29,46,0.92); border: 1px solid #2d3148; border-radius: 10px; padding: 12px; font-size: 0.7rem; z-index: 5; }
+    .legend-row { display: flex; align-items: center; gap: 7px; margin-bottom: 5px; }
+    .legend-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
+
+    /* ── Loading overlay ── */
+    #loading { position: absolute; inset: 0; background: #0f1117; display: flex; align-items: center; justify-content: center; z-index: 100; flex-direction: column; gap: 12px; }
+    .spinner { width: 40px; height: 40px; border: 3px solid #2d3148; border-top-color: #7dd3fc; border-radius: 50%; animation: spin 0.8s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* Colors */
+    .color-safe { color: #22c55e; }
+    .color-noncred { color: #3b82f6; }
+    .color-unsafe { color: #ef4444; }
+    .color-design { color: #f97316; }
+    .color-unknown { color: #94a3b8; }
+
+    /* ── Upload Modal ── */
+    .modal-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.7); z-index:200; align-items:center; justify-content:center; }
+    .modal-overlay.open { display:flex; }
+    .modal { background:#1a1d2e; border:1px solid #2d3148; border-radius:14px; width:540px; max-width:95vw; max-height:90vh; overflow-y:auto; padding:24px; }
+    .modal h2 { font-size:1rem; font-weight:700; color:#7dd3fc; margin-bottom:4px; }
+    .modal .sub { font-size:0.72rem; color:#64748b; margin-bottom:18px; }
+    .drop-zone { border:2px dashed #2d3148; border-radius:10px; padding:28px; text-align:center; cursor:pointer; transition:all .2s; margin-bottom:14px; }
+    .drop-zone.dragover { border-color:#3b82f6; background:#1e2d4a; }
+    .drop-zone .drop-icon { font-size:2rem; margin-bottom:8px; }
+    .drop-zone p { font-size:0.78rem; color:#64748b; }
+    .drop-zone strong { color:#e2e8f0; }
+    .file-chosen { background:#0f1117; border-radius:8px; padding:8px 12px; font-size:0.75rem; color:#7dd3fc; margin-bottom:14px; display:none; }
+    .modal label { font-size:0.72rem; color:#94a3b8; display:block; margin-bottom:3px; }
+    .modal input, .modal select { width:100%; background:#0f1117; border:1px solid #2d3148; border-radius:6px; color:#e2e8f0; padding:7px 10px; font-size:0.8rem; margin-bottom:12px; }
+    .col-map-area { display:none; margin-bottom:14px; }
+    .col-map-area h3 { font-size:0.75rem; color:#e2e8f0; margin-bottom:8px; font-weight:600; }
+    .col-row { display:flex; align-items:center; gap:8px; margin-bottom:6px; font-size:0.72rem; }
+    .col-row .col-name { flex:1; background:#0f1117; padding:5px 8px; border-radius:5px; color:#94a3b8; font-family:monospace; }
+    .col-row select { flex:1; margin-bottom:0; }
+    .col-matched { color:#22c55e; font-size:0.65rem; padding:3px 7px; background:#14532d22; border-radius:5px; }
+    .col-alias  { color:#7dd3fc; font-size:0.65rem; padding:3px 7px; background:#1e3a5f22; border-radius:5px; }
+    .upload-progress { display:none; background:#0f1117; border-radius:8px; padding:12px; margin-bottom:14px; }
+    .progress-bar-wrap { background:#2d3148; border-radius:999px; height:6px; margin:8px 0; overflow:hidden; }
+    .progress-bar { height:6px; border-radius:999px; background:#3b82f6; width:0%; transition:width 0.5s; animation: pulse-bar 1.5s ease-in-out infinite; }
+    @keyframes pulse-bar { 0%,100%{opacity:1} 50%{opacity:0.5} }
+    .progress-msg { font-size:0.72rem; color:#94a3b8; }
+    .upload-done { background:#14532d; border-radius:8px; padding:10px 14px; font-size:0.75rem; color:#22c55e; display:none; }
+    .upload-err  { background:#450a0a; border-radius:8px; padding:10px 14px; font-size:0.75rem; color:#ef4444; display:none; }
+    .modal-footer { display:flex; gap:10px; justify-content:flex-end; margin-top:4px; }
+    .btn-cancel { background:none; border:1px solid #2d3148; color:#94a3b8; padding:7px 16px; border-radius:7px; font-size:0.8rem; cursor:pointer; }
+    .btn-cancel:hover { border-color:#64748b; color:#e2e8f0; }
+    .btn-run-upload { background:#1d4ed8; color:#fff; border:none; padding:7px 20px; border-radius:7px; font-size:0.8rem; font-weight:600; cursor:pointer; }
+    .btn-run-upload:hover { background:#2563eb; }
+    .btn-run-upload:disabled { opacity:0.4; cursor:not-allowed; }
+  </style>
+</head>
+<body>
+
+<div id="loading">
+  <div class="spinner"></div>
+  <div style="color:#94a3b8;font-size:.85rem;">Loading pipeline results...</div>
+</div>
+
+<!-- ── Upload Modal ──────────────────────────────────────────── -->
+<div class="modal-overlay" id="upload-modal">
+  <div class="modal">
+    <h2>&#8679; Load Your Dataset</h2>
+    <p class="sub">Supports CSV, GeoJSON, Parquet, Excel &nbsp;·&nbsp; Max 200 MB</p>
+
+    <!-- Drop zone -->
+    <div class="drop-zone" id="drop-zone" onclick="document.getElementById('file-input').click()"
+         ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)" ondrop="handleDrop(event)">
+      <div class="drop-icon">&#128196;</div>
+      <p><strong>Click to browse</strong> or drag &amp; drop your file here</p>
+      <p style="margin-top:4px;font-size:.65rem;">CSV &nbsp;·&nbsp; GeoJSON &nbsp;·&nbsp; Parquet &nbsp;·&nbsp; Excel</p>
+    </div>
+    <input type="file" id="file-input" accept=".csv,.geojson,.json,.parquet,.xlsx,.xls"
+           style="display:none" onchange="onFileChosen(this)"/>
+    <div class="file-chosen" id="file-chosen-label"></div>
+
+    <!-- City / country -->
+    <div style="display:flex;gap:10px;">
+      <div style="flex:1">
+        <label>City name</label>
+        <input type="text" id="up-city" value="Peshawar" placeholder="e.g. Peshawar"/>
+      </div>
+      <div style="flex:1">
+        <label>Country code</label>
+        <input type="text" id="up-country" value="PK" placeholder="e.g. PK"/>
+      </div>
+    </div>
+
+    <!-- Column mapping (shown after preview loads) -->
+    <div class="col-map-area" id="col-map-area">
+      <h3>Column Mapping</h3>
+      <p style="font-size:.68rem;color:#64748b;margin-bottom:8px;">
+        Green = auto-matched &nbsp;·&nbsp; Blue = auto-alias &nbsp;·&nbsp; Dropdown = choose mapping for unrecognised columns
+      </p>
+      <div id="col-map-rows"></div>
+    </div>
+
+    <!-- Progress -->
+    <div class="upload-progress" id="upload-progress">
+      <div class="progress-msg" id="progress-msg">Uploading...</div>
+      <div class="progress-bar-wrap"><div class="progress-bar" id="progress-bar" style="width:30%"></div></div>
+      <div style="font-size:.65rem;color:#475569;margin-top:4px" id="progress-elapsed"></div>
+    </div>
+
+    <!-- Done / Error banners -->
+    <div class="upload-done" id="upload-done"></div>
+    <div class="upload-err"  id="upload-err"></div>
+
+    <div class="modal-footer">
+      <button class="btn-cancel" onclick="closeUpload()">Cancel</button>
+      <button class="btn-run-upload" id="btn-run-upload" disabled onclick="runUpload()">
+        Run Pipeline
+      </button>
+    </div>
+  </div>
+</div>
+
+<header>
+  <h1>SafeSpeed</h1>
+  <span class="badge">Ventax AI Lab · Peshawar</span>
+  <div class="spacer"></div>
+  <div class="header-stats">
+    <div class="header-stat"><div class="val" id="stat-total">—</div><div class="lbl">Segments</div></div>
+    <div class="header-stat"><div class="val" id="stat-unsafe" style="color:#ef4444">—</div><div class="lbl">Unsafe limit</div></div>
+    <div class="header-stat"><div class="val" id="stat-lives" style="color:#22c55e">—</div><div class="lbl">Lives/yr saved</div></div>
+    <div class="header-stat"><div class="val" id="stat-high">—</div><div class="lbl">High priority</div></div>
+  </div>
+  <button class="btn-upload" onclick="openUpload()">&#8679; Load Dataset</button>
+</header>
+
+<div class="main">
+  <div id="map"></div>
+
+  <div id="sidebar">
+    <div class="sidebar-tabs">
+      <button class="tab-btn active" onclick="switchTab('detail')">Segment Detail</button>
+      <button class="tab-btn" onclick="switchTab('simulator')">Simulator</button>
+      <button class="tab-btn" onclick="switchTab('network')">Network</button>
+    </div>
+
+    <!-- Detail tab -->
+    <div id="tab-detail" class="tab-content active">
+      <div id="no-selection" style="color:#64748b;font-size:.8rem;text-align:center;padding-top:40px;">
+        Click a segment on the map to see its analysis.
+      </div>
+      <div id="segment-card" style="display:none"></div>
+    </div>
+
+    <!-- Simulator tab -->
+    <div id="tab-simulator" class="tab-content">
+      <p style="font-size:.72rem;color:#94a3b8;margin-bottom:12px;">
+        Nilsson–Elvik Power Model: what happens to fatalities if speed changes?
+      </p>
+      <div class="sim-form">
+        <label>Segment ID</label>
+        <input type="text" id="sim-seg-id" placeholder="auto-filled on click"/>
+        <label>Speed before (km/h)</label>
+        <input type="number" id="sim-v1" value="60"/>
+        <label>Speed after (km/h)</label>
+        <input type="number" id="sim-v2" value="30"/>
+        <label>Annual fatalities on segment</label>
+        <input type="number" id="sim-fatal" value="0.05" step="0.01"/>
+        <label>Intervention class</label>
+        <select id="sim-interv">
+          <option value="sign_only">Sign only (0% P85 reduction assumed)</option>
+          <option value="sign_plus_calming" selected>Sign + traffic calming (85%)</option>
+          <option value="redesign">Full redesign (100%)</option>
+        </select>
+        <button class="btn-run" onclick="runSimulator()">Run Simulation</button>
+        <div id="sim-output"></div>
+      </div>
+    </div>
+
+    <!-- Network tab -->
+    <div id="tab-network" class="tab-content">
+      <div id="network-stats" style="color:#64748b;font-size:.8rem;">Loading…</div>
+    </div>
+  </div>
+</div>
+
+<div id="legend">
+  <div style="font-weight:600;margin-bottom:7px;font-size:.72rem;color:#e2e8f0;">Diagnosis</div>
+  <div class="legend-row"><div class="legend-dot" style="background:#ef4444"></div>Unsafe limit</div>
+  <div class="legend-row"><div class="legend-dot" style="background:#3b82f6"></div>Non-credible limit</div>
+  <div class="legend-row"><div class="legend-dot" style="background:#f97316"></div>Design-enabled risk</div>
+  <div class="legend-row"><div class="legend-dot" style="background:#22c55e"></div>Safe</div>
+  <div class="legend-row"><div class="legend-dot" style="background:#94a3b8"></div>Insufficient data</div>
+</div>
+
+<script src="https://unpkg.com/maplibre-gl@3.6.2/dist/maplibre-gl.js"></script>
+<script>
+const API = '';
+const DIAGNOSIS_COLORS = {
+  'unsafe_limit':       '#ef4444',
+  'non_credible_limit': '#3b82f6',
+  'design_enabled_risk':'#f97316',
+  'safe':               '#22c55e',
+  'insufficient_data':  '#94a3b8',
+};
+
+let map, allSegments = [];
+
+// ── Map init ─────────────────────────────────────────────────────────────────
+const map_ = new maplibregl.Map({
+  container: 'map',
+  style: {
+    version: 8,
+    sources: {
+      'osm': {
+        type: 'raster',
+        tiles: ['https://tile.openstreetmap.org/{z}/{x}/{y}.png'],
+        tileSize: 256,
+        attribution: '© OpenStreetMap contributors'
+      }
+    },
+    layers: [{ id: 'osm-tiles', type: 'raster', source: 'osm', minzoom: 0, maxzoom: 19 }]
+  },
+  center: [71.5249, 34.0151],  // Peshawar
+  zoom: 12
+});
+map = map_;
+
+map.on('load', async () => {
+  await loadData();
+  document.getElementById('loading').style.display = 'none';
+  loadNetworkStats();
+});
+
+// ── Data loading ──────────────────────────────────────────────────────────────
+async function loadData() {
+  let geojson;
+  try {
+    const res = await fetch(`${API}/api/segments/geojson`);
+    geojson = await res.json();
+  } catch (e) {
+    console.warn('No API data — showing placeholder message.');
+    document.getElementById('loading').innerHTML =
+      '<div style="color:#ef4444;font-size:.85rem;padding:20px;text-align:center;">Run <code>make demo</code> first, then <code>make serve</code>.</div>';
+    return;
+  }
+
+  allSegments = geojson.features.map(f => f.properties);
+
+  // Convert points to circles; add a source
+  map.addSource('segments', { type: 'geojson', data: geojson });
+
+  map.addLayer({
+    id: 'segments-circle',
+    type: 'circle',
+    source: 'segments',
+    paint: {
+      'circle-radius': ['interpolate', ['linear'], ['zoom'], 10, 5, 15, 12],
+      'circle-color': [
+        'match', ['get', 'diagnosis'],
+        'unsafe_limit', '#ef4444',
+        'non_credible_limit', '#3b82f6',
+        'design_enabled_risk', '#f97316',
+        'safe', '#22c55e',
+        '#94a3b8'
+      ],
+      'circle-stroke-color': '#0f1117',
+      'circle-stroke-width': 1.5,
+      'circle-opacity': 0.85,
+    }
+  });
+
+  map.addLayer({
+    id: 'segments-label',
+    type: 'symbol',
+    source: 'segments',
+    minzoom: 13,
+    layout: {
+      'text-field': ['concat', ['get', 'score'], ''],
+      'text-size': 9,
+      'text-offset': [0, 1.5],
+    },
+    paint: { 'text-color': '#e2e8f0', 'text-halo-color': '#0f1117', 'text-halo-width': 1 }
+  });
+
+  map.on('click', 'segments-circle', (e) => {
+    const props = e.features[0].properties;
+    showSegmentCard(props);
+    prefillSimulator(props);
+  });
+
+  map.on('mouseenter', 'segments-circle', () => { map.getCanvas().style.cursor = 'pointer'; });
+  map.on('mouseleave', 'segments-circle', () => { map.getCanvas().style.cursor = ''; });
+
+  updateHeaderStats();
+}
+
+// ── Header stats ──────────────────────────────────────────────────────────────
+// hpThreshold comes from /api/summary (network percentile, not hardcoded 70)
+let hpThreshold = 70;
+
+function updateHeaderStats() {
+  fetch('/api/summary').then(r => r.json()).then(data => {
+    hpThreshold = data.high_priority_threshold ?? 70;
+    document.getElementById('stat-total').textContent = data.total_segments ?? allSegments.length;
+    document.getElementById('stat-unsafe').textContent = data.diagnosis_distribution?.unsafe_limit ?? 0;
+    document.getElementById('stat-lives').textContent = (data.estimated_lives_saved_per_year ?? 0).toFixed(1);
+    document.getElementById('stat-high').textContent = data.high_priority_segments ?? 0;
+    // Re-paint map colors with updated threshold
+    if (map.getLayer('segments-circle')) refreshMapColors();
+  }).catch(() => {
+    // Fallback: count from loaded segments
+    const total = allSegments.length;
+    const unsafe = allSegments.filter(s => s.diagnosis === 'unsafe_limit').length;
+    const high = allSegments.filter(s => (s.score || 0) >= hpThreshold).length;
+    const lives = allSegments.reduce((acc, s) => acc + (s.lives_saved_per_year || 0), 0);
+    document.getElementById('stat-total').textContent = total;
+    document.getElementById('stat-unsafe').textContent = unsafe;
+    document.getElementById('stat-lives').textContent = lives.toFixed(1);
+    document.getElementById('stat-high').textContent = high;
+  });
+}
+
+function refreshMapColors() {
+  map.setPaintProperty('segments-circle', 'circle-color', [
+    'case',
+    ['>=', ['coalesce', ['get', 'score'], 0], hpThreshold], '#ef4444',
+    ['>=', ['coalesce', ['get', 'score'], 0], hpThreshold * 0.7], '#f97316',
+    ['>=', ['coalesce', ['get', 'score'], 0], hpThreshold * 0.4], '#eab308',
+    '#22c55e'
+  ]);
+}
+
+// ── Segment card ──────────────────────────────────────────────────────────────
+function scoreColor(score) {
+  if (score >= hpThreshold) return '#ef4444';
+  if (score >= hpThreshold * 0.7) return '#f97316';
+  if (score >= hpThreshold * 0.4) return '#eab308';
+  return '#22c55e';
+}
+
+function diagLabel(d) {
+  const map = {
+    unsafe_limit: 'Unsafe Limit',
+    non_credible_limit: 'Non-Credible Limit',
+    design_enabled_risk: 'Design-Enabled Risk',
+    safe: 'Safe',
+    insufficient_data: 'Insufficient Data',
+  };
+  return map[d] || d;
+}
+
+function showSegmentCard(props) {
+  document.getElementById('no-selection').style.display = 'none';
+  const card = document.getElementById('segment-card');
+  card.style.display = 'block';
+
+  const score = Math.round(props.score || 0);
+  const sc = scoreColor(score);
+  const dc = DIAGNOSIS_COLORS[props.diagnosis] || '#94a3b8';
+
+  card.innerHTML = `
+    <div class="score-ring">
+      <div class="ring-circle" style="color:${sc};border-color:${sc}">${score}</div>
+      <div>
+        <div class="seg-title">${props.road_name || props.segment_id}</div>
+        <div class="seg-sub">${props.city || 'Peshawar'} · ${props.road_class || 'road'} · ${props.confidence || '—'} confidence</div>
+      </div>
+    </div>
+
+    <span class="diagnosis-badge" style="background:${dc}22;color:${dc}">
+      ● ${diagLabel(props.diagnosis)}
+    </span>
+
+    <div class="speeds-grid">
+      <div class="speed-box">
+        <div class="sv" style="color:#ef4444">${props.posted_speed || props.s_posted || '—'}</div>
+        <div class="sl">S_posted</div>
+      </div>
+      <div class="speed-box">
+        <div class="sv" style="color:#22c55e">${props.s_safe || '—'}</div>
+        <div class="sl">S_safe</div>
+      </div>
+      <div class="speed-box">
+        <div class="sv" style="color:#7dd3fc">${props.p85_speed || props.p85 || '—'}</div>
+        <div class="sl">P85</div>
+      </div>
+    </div>
+
+    ${_infoRows(props)}
+
+    ${props.s_safe_rule ? `<span class="rule-chip">Rule: ${props.s_safe_rule}</span>` : ''}
+
+    ${props.policy_brief_en ? `<div class="brief-box">${props.policy_brief_en}</div>` : ''}
+  `;
+
+  switchTab('detail');
+}
+
+function _infoRows(p) {
+  const rows = [
+    ['Recommended speed', p.recommended_speed ? `${p.recommended_speed} km/h` : '—'],
+    ['Intervention', (p.intervention_class || '—').replace(/_/g,' ')],
+    ['VRU index', p.vru_index || '—'],
+    ['Lives saved/yr', p.lives_saved_per_year != null ? `~${p.lives_saved_per_year.toFixed(3)}` : '—'],
+    ['AADT', p.aadt || 'unknown'],
+    ['Has footpath', p.has_footpath ? 'Yes' : 'No'],
+    ['School ≤200m', p.school_within_200m ? 'Yes' : 'No'],
+    ['Market ≤200m', p.market_within_200m ? 'Yes' : 'No'],
+    ['Divided', p.is_divided ? 'Yes' : 'No'],
+    ['PTW share', p.ptw_share != null ? `${(p.ptw_share*100).toFixed(0)}%` : '—'],
+    ['Probe count', p.probe_count || 0],
+    ['Speed source', p.posted_speed_source || '—'],
+  ];
+  return rows.map(([k,v]) =>
+    `<div class="info-row"><span class="key">${k}</span><span class="val">${v}</span></div>`
+  ).join('');
+}
+
+// ── Simulator ─────────────────────────────────────────────────────────────────
+function prefillSimulator(props) {
+  document.getElementById('sim-seg-id').value = props.segment_id || '';
+  document.getElementById('sim-v1').value = props.posted_speed || props.s_posted || 60;
+  document.getElementById('sim-v2').value = props.recommended_speed || 30;
+  if (props.intervention_class) {
+    document.getElementById('sim-interv').value = props.intervention_class;
+  }
+}
+
+async function runSimulator() {
+  const body = {
+    segment_id: document.getElementById('sim-seg-id').value || 'manual',
+    speed_before: parseFloat(document.getElementById('sim-v1').value),
+    speed_after: parseFloat(document.getElementById('sim-v2').value),
+    annual_fatalities: parseFloat(document.getElementById('sim-fatal').value),
+    intervention_class: document.getElementById('sim-interv').value,
+  };
+
+  let result;
+  try {
+    const res = await fetch(`${API}/api/simulate`, {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify(body),
+    });
+    result = await res.json();
+  } catch(e) {
+    document.getElementById('sim-output').innerHTML =
+      '<p style="color:#ef4444;font-size:.75rem">API unavailable.</p>';
+    return;
+  }
+
+  document.getElementById('sim-output').innerHTML = `
+    <div class="sim-result">
+      <div class="sim-row"><span>Effective speed after</span><span style="color:#7dd3fc">${result.speed_effective_after} km/h</span></div>
+      <div class="sim-row"><span>Fatality reduction</span><span style="color:#22c55e">${result.fatalities_reduction_pct}%</span></div>
+      <div class="sim-row"><span>Serious injury reduction</span><span style="color:#22c55e">${result.serious_injury_reduction_pct}%</span></div>
+      <div class="sim-row"><span>Lives saved/yr</span><span style="color:#22c55e">${result.lives_saved_per_year ?? '—'}</span></div>
+      <div class="sim-row"><span>Intervention</span><span>${(result.intervention_class||'').replace(/_/g,' ')}</span></div>
+    </div>
+  `;
+}
+
+// ── Network stats ─────────────────────────────────────────────────────────────
+async function loadNetworkStats() {
+  try {
+    const res = await fetch(`${API}/api/summary`);
+    const data = await res.json();
+    const diag = data.diagnosis_distribution || {};
+    const pct = v => data.total_segments ? Math.round(100*v/data.total_segments)+'%' : '—';
+    document.getElementById('network-stats').innerHTML = `
+      <div class="info-row"><span class="key">Total segments</span><span class="val">${data.total_segments}</span></div>
+      <div class="info-row"><span class="key">Unsafe limit</span><span class="val" style="color:#ef4444">${diag.unsafe_limit||0} (${pct(diag.unsafe_limit||0)})</span></div>
+      <div class="info-row"><span class="key">Non-credible</span><span class="val" style="color:#3b82f6">${diag.non_credible_limit||0} (${pct(diag.non_credible_limit||0)})</span></div>
+      <div class="info-row"><span class="key">Design risk</span><span class="val" style="color:#f97316">${diag.design_enabled_risk||0} (${pct(diag.design_enabled_risk||0)})</span></div>
+      <div class="info-row"><span class="key">Safe</span><span class="val" style="color:#22c55e">${diag.safe||0} (${pct(diag.safe||0)})</span></div>
+      <div class="info-row"><span class="key">High priority (top decile)</span><span class="val">${data.high_priority_segments}</span></div>
+      <div class="info-row"><span class="key">Estimated lives saved/yr</span><span class="val" style="color:#22c55e">${data.estimated_lives_saved_per_year}</span></div>
+    `;
+  } catch(e) {
+    document.getElementById('network-stats').innerHTML =
+      '<p style="color:#64748b;font-size:.75rem">Run the pipeline first.</p>';
+  }
+}
+
+// ── Tab switching ─────────────────────────────────────────────────────────────
+function switchTab(name) {
+  document.querySelectorAll('.tab-btn').forEach((b,i) => {
+    const tabs = ['detail','simulator','network'];
+    b.classList.toggle('active', tabs[i] === name);
+  });
+  document.querySelectorAll('.tab-content').forEach(c => {
+    c.classList.toggle('active', c.id === `tab-${name}`);
+  });
+}
+
+// ── Upload Modal ──────────────────────────────────────────────────────────────
+let _uploadFile = null;
+let _pollTimer  = null;
+
+const PIPELINE_COLS = [
+  'posted_speed','p85_speed','aadt','road_class','is_divided','has_footpath',
+  'intersection_density','length_m','lat','lon','school_within_200m',
+  'market_within_200m','transit_stop_within_100m','ptw_share','probe_count',
+  'segment_id','road_name','urban','city','country'
+];
+
+function openUpload() {
+  document.getElementById('upload-modal').classList.add('open');
+  resetUploadUI();
+}
+
+function closeUpload() {
+  document.getElementById('upload-modal').classList.remove('open');
+  if (_pollTimer) clearInterval(_pollTimer);
+}
+
+function resetUploadUI() {
+  _uploadFile = null;
+  document.getElementById('file-chosen-label').style.display = 'none';
+  document.getElementById('col-map-area').style.display = 'none';
+  document.getElementById('upload-progress').style.display = 'none';
+  document.getElementById('upload-done').style.display = 'none';
+  document.getElementById('upload-err').style.display = 'none';
+  document.getElementById('btn-run-upload').disabled = true;
+  document.getElementById('col-map-rows').innerHTML = '';
+}
+
+function handleDragOver(e) { e.preventDefault(); document.getElementById('drop-zone').classList.add('dragover'); }
+function handleDragLeave(e) { document.getElementById('drop-zone').classList.remove('dragover'); }
+function handleDrop(e) {
+  e.preventDefault();
+  document.getElementById('drop-zone').classList.remove('dragover');
+  const f = e.dataTransfer.files[0];
+  if (f) processChosenFile(f);
+}
+function onFileChosen(input) {
+  if (input.files[0]) processChosenFile(input.files[0]);
+}
+
+async function processChosenFile(file) {
+  _uploadFile = file;
+  const label = document.getElementById('file-chosen-label');
+  label.style.display = 'block';
+  label.innerHTML = `&#128196; <b>${file.name}</b> &nbsp; (${(file.size/1024/1024).toFixed(2)} MB)`;
+
+  document.getElementById('btn-run-upload').disabled = false;
+  document.getElementById('upload-done').style.display = 'none';
+  document.getElementById('upload-err').style.display = 'none';
+
+  // Upload for preview
+  try {
+    const fd = new FormData();
+    fd.append('file', file);
+    const res = await fetch(`${API}/api/upload/preview?filename=${encodeURIComponent(file.name)}`, {method:'GET'});
+    // preview needs the file first; skip preview on first load, just show mapping after upload
+  } catch(e) {}
+
+  // Show placeholder mapping (populated properly after actual upload)
+  document.getElementById('col-map-area').style.display = 'block';
+  document.getElementById('col-map-rows').innerHTML =
+    '<p style="font-size:.7rem;color:#475569">Column map will appear after pipeline runs. ' +
+    'If your columns have custom names, add them below.</p>' +
+    buildManualMapInputs();
+}
+
+function buildManualMapInputs() {
+  const targets = PIPELINE_COLS.map(c => `<option value="">(skip)</option><option value="${c}">${c}</option>`).join('');
+  return `
+    <div style="font-size:.7rem;color:#94a3b8;margin-top:8px;">Optional: map a custom column name to a pipeline field</div>
+    ${[1,2,3].map(i => `
+    <div class="col-row">
+      <input type="text" id="custom-col-${i}" placeholder="Your column name" style="flex:1;margin-bottom:0"/>
+      <span style="color:#475569">&#8594;</span>
+      <select id="custom-target-${i}" style="flex:1;margin-bottom:0">
+        <option value="">(skip)</option>
+        ${PIPELINE_COLS.map(c=>`<option value="${c}">${c}</option>`).join('')}
+      </select>
+    </div>`).join('')}
+  `;
+}
+
+async function runUpload() {
+  if (!_uploadFile) return;
+
+  // Build custom column map
+  const colMap = {};
+  for (let i = 1; i <= 3; i++) {
+    const k = document.getElementById(`custom-col-${i}`)?.value?.trim();
+    const v = document.getElementById(`custom-target-${i}`)?.value;
+    if (k && v) colMap[k] = v;
+  }
+
+  const fd = new FormData();
+  fd.append('file', _uploadFile);
+  fd.append('city', document.getElementById('up-city').value || 'Peshawar');
+  fd.append('country', document.getElementById('up-country').value || 'PK');
+  fd.append('column_map', JSON.stringify(colMap));
+
+  document.getElementById('upload-progress').style.display = 'block';
+  document.getElementById('upload-done').style.display = 'none';
+  document.getElementById('upload-err').style.display = 'none';
+  document.getElementById('btn-run-upload').disabled = true;
+  document.getElementById('progress-msg').textContent = 'Uploading file...';
+  document.getElementById('progress-bar').style.width = '15%';
+
+  let res;
+  try {
+    res = await fetch(`${API}/api/upload`, { method: 'POST', body: fd });
+    if (!res.ok) {
+      const err = await res.json();
+      throw new Error(err.detail || 'Upload failed');
+    }
+  } catch(e) {
+    showUploadError(e.message);
+    return;
+  }
+
+  document.getElementById('progress-msg').textContent = 'File uploaded. Pipeline running...';
+  document.getElementById('progress-bar').style.width = '40%';
+
+  // Poll status
+  _pollTimer = setInterval(pollPipelineStatus, 1500);
+}
+
+async function pollPipelineStatus() {
+  try {
+    const res = await fetch(`${API}/api/upload/status`);
+    const job = await res.json();
+
+    document.getElementById('progress-msg').textContent = job.message || 'Running...';
+    if (job.elapsed_s) {
+      document.getElementById('progress-elapsed').textContent = `${job.elapsed_s}s elapsed`;
+    }
+
+    if (job.status === 'done') {
+      clearInterval(_pollTimer);
+      document.getElementById('progress-bar').style.width = '100%';
+      setTimeout(() => {
+        document.getElementById('upload-progress').style.display = 'none';
+        const done = document.getElementById('upload-done');
+        done.style.display = 'block';
+        done.innerHTML = `&#10003; Done! <b>${job.result?.total_segments || '?'} segments</b> scored. Map refreshing...`;
+        document.getElementById('btn-run-upload').disabled = false;
+        setTimeout(() => { closeUpload(); reloadMap(); }, 1800);
+      }, 400);
+    } else if (job.status === 'error') {
+      clearInterval(_pollTimer);
+      showUploadError(job.error || 'Unknown error');
+    } else {
+      // Animate progress bar
+      const bar = document.getElementById('progress-bar');
+      const cur = parseFloat(bar.style.width) || 40;
+      bar.style.width = Math.min(cur + 3, 90) + '%';
+    }
+  } catch(e) {}
+}
+
+function showUploadError(msg) {
+  document.getElementById('upload-progress').style.display = 'none';
+  const el = document.getElementById('upload-err');
+  el.style.display = 'block';
+  el.textContent = 'Error: ' + msg;
+  document.getElementById('btn-run-upload').disabled = false;
+}
+
+async function reloadMap() {
+  if (!map.getSource('segments')) { await loadData(); return; }
+  try {
+    const res = await fetch(`${API}/api/segments/geojson`);
+    const geojson = await res.json();
+    allSegments = geojson.features.map(f => f.properties);
+    map.getSource('segments').setData(geojson);
+    updateHeaderStats();
+    loadNetworkStats();
+  } catch(e) { console.warn('Map reload failed', e); }
+}
+</script>
+</body>
+</html>

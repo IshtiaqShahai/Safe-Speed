@@ -1,0 +1,136 @@
+# SafeSpeed — Master Configuration
+# ALL thresholds, weights, and buffers are declared here with inline citations.
+# No analytical constants are hidden in code. Modify this file to calibrate
+# for a specific country or corridor.
+
+# ===========================================================================
+# S_safe — Survivable-speed thresholds (km/h)
+# Ref: WHO/GRSF Speed Management Manual; WHO Global Plan 2021-2030 §11;
+#      Stockholm Declaration (2020) §11; Austroads Guide to Road Safety
+# ===========================================================================
+safe_speeds:
+  vru_mixing: 30      # Motorized + pedestrian/cyclist/PTW without segregation
+  intersection: 50    # At-grade intersections (side-impact survivability)
+  undivided: 70       # Undivided two-way carriageway (head-on survivability)
+  divided: 80         # Divided carriageway, no VRU exposure (national limits apply)
+
+# ===========================================================================
+# VRU context detection parameters
+# Ref: WHO/GRSF Speed Management Manual Ch.4; iRAP Model 3.10 VRU parameters
+# ===========================================================================
+vru:
+  school_buffer_m: 200              # Proximity buffer — schools generating pedestrians
+  market_buffer_m: 200              # Proximity buffer — markets/commercial areas
+  transit_buffer_m: 100             # Proximity buffer — bus/transit stops
+  intersection_density_threshold: 4.0  # Intersections/km above which 50 km/h rule fires
+  ptw_share_threshold: 0.30         # PTW fraction triggering VRU-mixing classification
+  high_ptw_share: 0.15              # Elevated PTW share (used in VRU index weighting)
+
+# ===========================================================================
+# Scoring weights
+# w1=0.6 (limit gap): wrong posted limit is a direct policy failure.
+# w2=0.4 (behavior gap): signals design or enforcement problem.
+# Sensitivity §8.3: top-100 ranking stable under ±50% weight perturbation.
+# ===========================================================================
+scoring:
+  w1: 0.6
+  w2: 0.4
+  exposure_min: 0.5
+  exposure_max: 1.5
+  # "High priority" = score at/above this percentile of the scored network.
+  # Speed Safety Score is a RELATIVE priority index, not an absolute 0-100
+  # severity. On real ADB data the score distribution is right-skewed (most
+  # segments are safe), so a fixed cutoff like 70 never fires. We therefore
+  # define high-priority by network percentile (top 10%) plus a small absolute
+  # floor to exclude near-zero scores. Both are configurable.
+  high_priority_percentile: 90
+  high_priority_floor: 10.0
+
+# ===========================================================================
+# Limit credibility thresholds
+# Ref: Goldenbeld & van Schagen (2007); van Nes et al. (2007)
+# Non-credible: P85 > 115% of posted limit (drivers ignore sign, road invites speed)
+# ===========================================================================
+credibility:
+  p85_over_posted_ratio: 1.15   # P85 / S_posted > this → non-credible limit
+  p85_over_safe_ratio: 1.10     # P85 / S_safe > this → behavior exceeds safe envelope
+  design_alignment_tolerance: 0.10  # |P85 - S_posted| / S_posted < this → "in alignment"
+
+# ===========================================================================
+# Nilsson Power Model — lives-saved simulator
+# Ref: Nilsson (2004); Elvik (2013); Elvik, Vadeby, Hels, van Schagen (2019)
+# Fatalities_after = Fatalities_before × (v2/v1)^e
+# ===========================================================================
+simulator:
+  exponents:
+    fatality: 4.0          # Canonical (Nilsson 2004; Elvik 2013 re-estimate)
+    serious_injury: 3.0    # Elvik (2019) updated
+    all_injury: 2.0        # Elvik (2019) updated
+  # Operating-speed change assumptions (§2.3 honesty rule):
+  # A sign change ALONE does not change P85 — confirmed by street-design/speed ML literature (2025, citation to be verified).
+  speed_change_effectiveness:
+    sign_only: 0.0           # Sign change alone: 0% P85 reduction assumed
+    sign_plus_calming: 0.85  # Sign + traffic calming: 85% of Δlimit achieved in P85
+    redesign: 1.0            # Full redesign: full operating speed change assumed
+
+# ===========================================================================
+# Confidence grading
+# ===========================================================================
+confidence:
+  high_min_probes: 50
+  medium_min_probes: 10
+  required_fields_high:
+    - posted_speed
+    - p85_speed
+    - aadt
+    - has_footpath
+  required_fields_medium:
+    - posted_speed
+
+# ===========================================================================
+# AADT normalization (for exposure calculation)
+# ===========================================================================
+exposure:
+  aadt_low: 500
+  aadt_high: 50000
+  default_aadt: 5000        # used only when aadt AND probe_count both absent
+  # Rough scale from GPS probe_count to AADT (probes ≈ 5% vehicle penetration,
+  # observed daily → ×20 converts to daily volume as a conservative proxy).
+  # Replace with a calibrated coefficient once ADB ground-truth counts are available.
+  probe_to_aadt_scale: 20.0
+
+# ===========================================================================
+# OSM fallback tag mappings (Zero-Local-Data Mode §9)
+# ===========================================================================
+osm:
+  speed_tags:
+    - maxspeed
+    - maxspeed:forward
+    - maxspeed:backward
+  road_class_divided:
+    - motorway
+    - motorway_link
+  road_class_undivided:
+    - trunk
+    - trunk_link
+    - primary
+    - primary_link
+    - secondary
+    - secondary_link
+    - tertiary
+    - tertiary_link
+  road_class_vru:
+    - living_street
+    - pedestrian
+    - service
+    - residential
+  default_posted_speeds:
+    motorway: 120
+    trunk: 100
+    primary: 80
+    secondary: 60
+    tertiary: 50
+    residential: 30
+    living_street: 10
+    service: 20
+    default: 50

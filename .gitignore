@@ -1,0 +1,39 @@
+# Environment
+.env
+*.env
+
+# ADB data (NDA)
+data/adb/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+.coverage
+htmlcov/
+dist/
+build/
+*.egg-info/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Vector store
+qdrant_storage/
+
+# Intermediate pipeline outputs (large)
+docs/intermediate/
+
+# Large pipeline output — regenerate with: python -m core.pipeline --mode adb
+# map_data.csv (8 MB) IS committed so the Streamlit app works on deploy
+docs/scored_segments.geojson
+docs/data_quality_report.json
+
+# Notebooks checkpoints
+.ipynb_checkpoints/

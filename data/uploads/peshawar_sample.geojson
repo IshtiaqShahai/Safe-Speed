@@ -1,0 +1,1605 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            71.45765,
+            34.02159
+          ],
+          [
+            71.45611,
+            34.02445
+          ]
+        ]
+      },
+      "properties": {
+        "segment_id": "psh_0001",
+        "road_name": "Namak Mandi Chowk",
+        "city": "Peshawar",
+        "country": "PK",
+        "urban": true,
+        "lon": 71.45765,
+        "lat": 34.02159,
+        "length_m": 767.0,
+        "road_class": "secondary",
+        "is_divided": false,
+        "has_footpath": false,
+        "school_within_200m": true,
+        "market_within_200m": true,
+        "transit_stop_within_100m": true,
+        "intersection_density": 3.0,
+        "posted_speed": 60,
+        "p85_speed": 58,
+        "aadt": 12000,
+        "ptw_share": 0.35,
+        "probe_count": 80,
+        "posted_speed_source": "adb",
+        "sign_conflict": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            71.47313,
+            34.05794
+          ],
+          [
+            71.47003,
+            34.05338
+          ]
+        ]
+      },
+      "properties": {
+        "segment_id": "psh_0002",
+        "road_name": "GT Road Connector",
+        "city": "Peshawar",
+        "country": "PK",
+        "urban": true,
+        "lon": 71.47313,
+        "lat": 34.05794,
+        "length_m": 767.0,
+        "road_class": "secondary",
+        "is_divided": false,
+        "has_footpath": false,
+        "school_within_200m": false,
+        "market_within_200m": true,
+        "transit_stop_within_100m": true,
+        "intersection_density": 2.0,
+        "posted_speed": 50,
+        "p85_speed": 52,
+        "aadt": 9000,
+        "ptw_share": 0.32,
+        "probe_count": 65,
+        "posted_speed_source": "adb",
+        "sign_conflict": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            71.6113,
+            34.03242
+          ],
+          [
+            71.6157,
+            34.03479
+          ]
+        ]
+      },
+      "properties": {
+        "segment_id": "psh_0003",
+        "road_name": "Charsadda Road",
+        "city": "Peshawar",
+        "country": "PK",
+        "urban": true,
+        "lon": 71.6113,
+        "lat": 34.03242,
+        "length_m": 456.0,
+        "road_class": "primary",
+        "is_divided": false,
+        "has_footpath": false,
+        "school_within_200m": true,
+        "market_within_200m": false,
+        "transit_stop_within_100m": true,
+        "intersection_density": 5.0,
+        "posted_speed": 60,
+        "p85_speed": 55,
+        "aadt": 8000,
+        "ptw_share": 0.2,
+        "probe_count": 90,
+        "posted_speed_source": "adb",
+        "sign_conflict": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            71.63977,
+            34.06049
+          ],
+          [
+            71.641,
+            34.06212
+          ]
+        ]
+      },
+      "properties": {
+        "segment_id": "psh_0004",
+        "road_name": "Ring Road N",
+        "city": "Peshawar",
+        "country": "PK",
+        "urban": true,
+        "lon": 71.63977,
+        "lat": 34.06049,
+        "length_m": 362.0,
+        "road_class": "primary",
+        "is_divided": false,
+        "has_footpath": true,
+        "school_within_200m": true,
+        "market_within_200m": true,
+        "transit_stop_within_100m": false,
+        "intersection_density": 2.5,
+        "posted_speed": 50,
+        "p85_speed": 47,
+        "aadt": 15000,
+        "ptw_share": 0.18,
+        "probe_count": 120,
+        "posted_speed_source": "adb",
+        "sign_conflict": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            71.55142,
+            34.03003
+          ],
+          [
+            71.54968,
+            34.032
+          ]
+        ]
+      },
+      "properties": {
+        "segment_id": "psh_0005",
+        "road_name": "Khyber Bazaar St",
+        "city": "Peshawar",
+        "country": "PK",
+        "urban": true,
+        "lon": 71.55142,
+        "lat": 34.03003,
+        "length_m": 921.0,
+        "road_class": "trunk",
+        "is_divided": true,
+        "has_footpath": true,
+        "school_within_200m": false,
+        "market_within_200m": false,
+        "transit_stop_within_100m": false,
+        "intersection_density": 1.0,
+        "posted_speed": 60,
+        "p85_speed": 80,
+        "aadt": 20000,
+        "ptw_share": 0.08,
+        "probe_count": 200,
+        "posted_speed_source": "adb",
+        "sign_conflict": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            71.58299,
+            33.9955
+          ],
+          [
+            71.58547,
+            33.99224
+          ]
+        ]
+      },
+      "properties": {
+        "segment_id": "psh_0006",
+        "road_name": "University Road",
+        "city": "Peshawar",
+        "country": "PK",
+        "urban": true,
+        "lon": 71.58299,
+        "lat": 33.9955,
+        "length_m": 940.0,
+        "road_class": "primary",
+        "is_divided": false,
+        "has_footpath": true,
+        "school_within_200m": false,
+        "market_within_200m": false,
+        "transit_stop_within_100m": false,
+        "intersection_density": 1.5,
+        "posted_speed": 50,
+        "p85_speed": 68,
+        "aadt": 18000,
+        "ptw_share": 0.1,
+        "probe_count": 150,
+        "posted_speed_source": "adb",
+        "sign_conflict": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            71.61675,
+            33.98646
+          ],
+          [
+            71.61385,
+            33.98932
+          ]
+        ]
+      },
+      "properties": {
+        "segment_id": "psh_0007",
+        "road_name": "Jamrud Road",
+        "city": "Peshawar",
+        "country": "PK",
+        "urban": true,
+        "lon": 71.61675,
+        "lat": 33.98646,
+        "length_m": 989.0,
+        "road_class": "trunk",
+        "is_divided": true,
+        "has_footpath": true,
+        "school_within_200m": false,
+        "market_within_200m": false,
+        "transit_stop_within_100m": true,
+        "intersection_density": 0.8,
+        "posted_speed": 80,
+        "p85_speed": 100,
+        "aadt": 30000,
+        "ptw_share": 0.05,
+        "probe_count": 300,
+        "posted_speed_source": "adb",
+        "sign_conflict": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            71.53836,
+            34.03108
+          ],
+          [
+            71.53847,
+            34.03402
+          ]
+        ]
+      },
+      "properties": {
+        "segment_id": "psh_0008",
+        "road_name": "Hayatabad Link",
+        "city": "Peshawar",
+        "country": "PK",
+        "urban": true,
+        "lon": 71.53836,
+        "lat": 34.03108,
+        "length_m": 1448.0,
+        "road_class": "secondary",
+        "is_divided": false,
+        "has_footpath": false,
+        "school_within_200m": true,
+        "market_within_200m": true,
+        "transit_stop_within_100m": true,
+        "intersection_density": 3.5,
+        "posted_speed": 40,
+        "p85_speed": 42,
+        "aadt": 10000,
+        "ptw_share": 0.4,
+        "probe_count": 75,
+        "posted_speed_source": "adb",
+        "sign_conflict": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            71.58177,
+            33.98405
+          ],
+          [
+            71.58341,
+            33.98524
+          ]
+        ]
+      },
+      "properties": {
+        "segment_id": "psh_0009",
+        "road_name": "Warsak Road Segment",
+        "city": "Peshawar",
+        "country": "PK",
+        "urban": true,
+        "lon": 71.58177,
+        "lat": 33.98405,
+        "length_m": 321.0,
+        "road_class": "secondary",
+        "is_divided": false,
+        "has_footpath": false,
+        "school_within_200m": false,
+        "market_within_200m": true,
+        "transit_stop_within_100m": true,
+        "intersection_density": 4.5,
+        "posted_speed": 50,
+        "p85_speed": 51,
+        "aadt": 8500,
+        "ptw_share": 0.3,
+        "probe_count": 60,
+        "posted_speed_source": "adb",
+        "sign_conflict": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            71.49697,
+            33.98725
+          ],
+          [
+            71.50004,
+            33.98372
+          ]
+        ]
+      },
+      "properties": {
+        "segment_id": "psh_0010",
+        "road_name": "Bara Road S",
+        "city": "Peshawar",
+        "country": "PK",
+        "urban": true,
+        "lon": 71.49697,
+        "lat": 33.98725,
+        "length_m": 260.0,
+        "road_class": "motorway",
+        "is_divided": true,
+        "has_footpath": true,
+        "school_within_200m": false,
+        "market_within_200m": false,
+        "transit_stop_within_100m": false,
+        "intersection_density": 0.5,
+        "posted_speed": 80,
+        "p85_speed": 76,
+        "aadt": 25000,
+        "ptw_share": 0.06,
+        "probe_count": 250,
+        "posted_speed_source": "adb",
+        "sign_conflict": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            71.57225,
+            34.04222
+          ],
+          [
+            71.5718,
+            34.04608
+          ]
+        ]
+      },
+      "properties": {
+        "segment_id": "psh_0011",
+        "road_name": "Peshawar Cantt Rd",
+        "city": "Peshawar",
+        "country": "PK",
+        "urban": true,
+        "lon": 71.57225,
+        "lat": 34.04222,
+        "length_m": 948.0,
+        "road_class": "primary",
+        "is_divided": false,
+        "has_footpath": true,
+        "school_within_200m": false,
+        "market_within_200m": false,
+        "transit_stop_within_100m": true,
+        "intersection_density": 3.0,
+        "posted_speed": 50,
+        "p85_speed": 47,
+        "aadt": 12000,
+        "ptw_share": 0.15,
+        "probe_count": 100,
+        "posted_speed_source": "adb",
+        "sign_conflict": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            71.5268,
+            33.99796
+          ],
+          [
+            71.52328,
+            33.99984
+          ]
+        ]
+      },
+      "properties": {
+        "segment_id": "psh_0012",
+        "road_name": "Sunehri Masjid Rd",
+        "city": "Peshawar",
+        "country": "PK",
+        "urban": true,
+        "lon": 71.5268,
+        "lat": 33.99796,
+        "length_m": 1360.0,
+        "road_class": "residential",
+        "is_divided": false,
+        "has_footpath": true,
+        "school_within_200m": true,
+        "market_within_200m": false,
+        "transit_stop_within_100m": false,
+        "intersection_density": 2.0,
+        "posted_speed": 30,
+        "p85_speed": 28,
+        "aadt": 4000,
+        "ptw_share": 0.2,
+        "probe_count": 55,
+        "posted_speed_source": "adb",
+        "sign_conflict": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            71.62709,
+            34.04341
+          ],
+          [
+            71.62428,
+            34.04645
+          ]
+        ]
+      },
+      "properties": {
+        "segment_id": "psh_0013",
+        "road_name": "Dabgari Garden Rd",
+        "city": "Peshawar",
+        "country": "PK",
+        "urban": true,
+        "lon": 71.62709,
+        "lat": 34.04341,
+        "length_m": 1105.0,
+        "road_class": "secondary",
+        "is_divided": false,
+        "has_footpath": false,
+        "school_within_200m": false,
+        "market_within_200m": false,
+        "transit_stop_within_100m": false,
+        "intersection_density": 2.0,
+        "posted_speed": 60,
+        "p85_speed": null,
+        "aadt": null,
+        "ptw_share": 0.1,
+        "probe_count": 3,
+        "posted_speed_source": "osm",
+        "sign_conflict": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            71.56148,
+            34.0601
+          ],
+          [
+            71.55769,
+            34.05643
+          ]
+        ]
+      },
+      "properties": {
+        "segment_id": "psh_0014",
+        "road_name": "Firdous Cinema Rd",
+        "city": "Peshawar",
+        "country": "PK",
+        "urban": true,
+        "lon": 71.56148,
+        "lat": 34.0601,
+        "length_m": 804.0,
+        "road_class": "trunk",
+        "is_divided": false,
+        "has_footpath": true,
+        "school_within_200m": true,
+        "market_within_200m": true,
+        "transit_stop_within_100m": false,
+        "intersection_density": 1.1,
+        "posted_speed": 60,
+        "p85_speed": null,
+        "aadt": null,
+        "ptw_share": 0.14,
+        "probe_count": 0,
+        "posted_speed_source": "osm",
+        "sign_conflict": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            71.56179,
+            33.98808
+          ],
+          [
+            71.56434,
+            33.98751
+          ]
+        ]
+      },
+      "properties": {
+        "segment_id": "psh_0015",
+        "road_name": "Saddar Bazaar St",
+        "city": "Peshawar",
+        "country": "PK",
+        "urban": true,
+        "lon": 71.56179,
+        "lat": 33.98808,
+        "length_m": 1260.0,
+        "road_class": "tertiary",
+        "is_divided": false,
+        "has_footpath": false,
+        "school_within_200m": false,
+        "market_within_200m": false,
+        "transit_stop_within_100m": false,
+        "intersection_density": 5.8,
+        "posted_speed": 30,
+        "p85_speed": 26.0,
+        "aadt": 11837.0,
+        "ptw_share": 0.14,
+        "probe_count": 80,
+        "posted_speed_source": "adb",
+        "sign_conflict": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            71.53535,
+            34.05882
+          ],
+          [
+            71.53481,
+            34.05541
+          ]
+        ]
+      },
+      "properties": {
+        "segment_id": "psh_0016",
+        "road_name": "Qissa Khwani Bazaar",
+        "city": "Peshawar",
+        "country": "PK",
+        "urban": true,
+        "lon": 71.53535,
+        "lat": 34.05882,
+        "length_m": 1320.0,
+        "road_class": "primary",
+        "is_divided": true,
+        "has_footpath": false,
+        "school_within_200m": false,
+        "market_within_200m": true,
+        "transit_stop_within_100m": true,
+        "intersection_density": 5.2,
+        "posted_speed": 70,
+        "p85_speed": 92.0,
+        "aadt": null,
+        "ptw_share": 0.17,
+        "probe_count": 80,
+        "posted_speed_source": "adb",
+        "sign_conflict": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            71.60036,
+            34.05078
+          ],
+          [
+            71.59813,
+            34.05356
+          ]
+        ]
+      },
+      "properties": {
+        "segment_id": "psh_0017",
+        "road_name": "Kohat Road Seg",
+        "city": "Peshawar",
+        "country": "PK",
+        "urban": true,
+        "lon": 71.60036,
+        "lat": 34.05078,
+        "length_m": 830.0,
+        "road_class": "primary",
+        "is_divided": false,
+        "has_footpath": false,
+        "school_within_200m": true,
+        "market_within_200m": true,
+        "transit_stop_within_100m": true,
+        "intersection_density": 6.1,
+        "posted_speed": 30,
+        "p85_speed": 36.0,
+        "aadt": 7344.0,
+        "ptw_share": 0.19,
+        "probe_count": 40,
+        "posted_speed_source": "adb",
+        "sign_conflict": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            71.53797,
+            34.03563
+          ],
+          [
+            71.53531,
+            34.03399
+          ]
+        ]
+      },
+      "properties": {
+        "segment_id": "psh_0018",
+        "road_name": "Rashid Garhi Rd",
+        "city": "Peshawar",
+        "country": "PK",
+        "urban": true,
+        "lon": 71.53797,
+        "lat": 34.03563,
+        "length_m": 1361.0,
+        "road_class": "secondary",
+        "is_divided": false,
+        "has_footpath": false,
+        "school_within_200m": true,
+        "market_within_200m": false,
+        "transit_stop_within_100m": false,
+        "intersection_density": 1.6,
+        "posted_speed": 60,
+        "p85_speed": 82.0,
+        "aadt": 9565.0,
+        "ptw_share": 0.18,
+        "probe_count": 0,
+        "posted_speed_source": "osm",
+        "sign_conflict": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            71.48017,
+            33.99596
+          ],
+          [
+            71.4767,
+            33.9931
+          ]
+        ]
+      },
+      "properties": {
+        "segment_id": "psh_0019",
+        "road_name": "Phase 4 Connector",
+        "city": "Peshawar",
+        "country": "PK",
+        "urban": true,
+        "lon": 71.48017,
+        "lat": 33.99596,
+        "length_m": 739.0,
+        "road_class": "trunk",
+        "is_divided": true,
+        "has_footpath": true,
+        "school_within_200m": false,
+        "market_within_200m": true,
+        "transit_stop_within_100m": true,
+        "intersection_density": 6.2,
+        "posted_speed": 50,
+        "p85_speed": 57.0,
+        "aadt": 26071.0,
+        "ptw_share": 0.11,
+        "probe_count": 5,
+        "posted_speed_source": "osm",
+        "sign_conflict": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            71.54318,
+            33.95747
+          ],
+          [
+            71.54651,
+            33.95636
+          ]
+        ]
+      },
+      "properties": {
+        "segment_id": "psh_0020",
+        "road_name": "Tehkal Road",
+        "city": "Peshawar",
+        "country": "PK",
+        "urban": true,
+        "lon": 71.54318,
+        "lat": 33.95747,
+        "length_m": 1201.0,
+        "road_class": "residential",
+        "is_divided": true,
+        "has_footpath": false,
+        "school_within_200m": true,
+        "market_within_200m": false,
+        "transit_stop_within_100m": false,
+        "intersection_density": 2.9,
+        "posted_speed": 40,
+        "p85_speed": 33.0,
+        "aadt": null,
+        "ptw_share": 0.09,
+        "probe_count": 5,
+        "posted_speed_source": "osm",
+        "sign_conflict": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            71.45391,
+            34.05568
+          ],
+          [
+            71.45467,
+            34.05545
+          ]
+        ]
+      },
+      "properties": {
+        "segment_id": "psh_0021",
+        "road_name": "Pishtakhara Bridge Rd",
+        "city": "Peshawar",
+        "country": "PK",
+        "urban": true,
+        "lon": 71.45391,
+        "lat": 34.05568,
+        "length_m": 1426.0,
+        "road_class": "trunk",
+        "is_divided": false,
+        "has_footpath": false,
+        "school_within_200m": true,
+        "market_within_200m": false,
+        "transit_stop_within_100m": false,
+        "intersection_density": 2.1,
+        "posted_speed": 70,
+        "p85_speed": 60.0,
+        "aadt": 27587.0,
+        "ptw_share": 0.26,
+        "probe_count": 40,
+        "posted_speed_source": "adb",
+        "sign_conflict": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            71.528,
+            34.057
+          ],
+          [
+            71.53136,
+            34.05738
+          ]
+        ]
+      },
+      "properties": {
+        "segment_id": "psh_0022",
+        "road_name": "Old City Core",
+        "city": "Peshawar",
+        "country": "PK",
+        "urban": true,
+        "lon": 71.528,
+        "lat": 34.057,
+        "length_m": 1155.0,
+        "road_class": "tertiary",
+        "is_divided": false,
+        "has_footpath": true,
+        "school_within_200m": true,
+        "market_within_200m": true,
+        "transit_stop_within_100m": true,
+        "intersection_density": 6.8,
+        "posted_speed": 40,
+        "p85_speed": 34.0,
+        "aadt": 33825.0,
+        "ptw_share": 0.25,
+        "probe_count": 15,
+        "posted_speed_source": "adb",
+        "sign_conflict": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            71.62956,
+            34.00859
+          ],
+          [
+            71.62729,
+            34.00845
+          ]
+        ]
+      },
+      "properties": {
+        "segment_id": "psh_0023",
+        "road_name": "Industrial Estate Rd",
+        "city": "Peshawar",
+        "country": "PK",
+        "urban": true,
+        "lon": 71.62956,
+        "lat": 34.00859,
+        "length_m": 706.0,
+        "road_class": "primary",
+        "is_divided": true,
+        "has_footpath": false,
+        "school_within_200m": false,
+        "market_within_200m": false,
+        "transit_stop_within_100m": false,
+        "intersection_density": 4.4,
+        "posted_speed": 60,
+        "p85_speed": null,
+        "aadt": 35270.0,
+        "ptw_share": 0.38,
+        "probe_count": 40,
+        "posted_speed_source": "adb",
+        "sign_conflict": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            71.60963,
+            34.0369
+          ],
+          [
+            71.61304,
+            34.0411
+          ]
+        ]
+      },
+      "properties": {
+        "segment_id": "psh_0024",
+        "road_name": "Airport Link",
+        "city": "Peshawar",
+        "country": "PK",
+        "urban": true,
+        "lon": 71.60963,
+        "lat": 34.0369,
+        "length_m": 1475.0,
+        "road_class": "primary",
+        "is_divided": true,
+        "has_footpath": true,
+        "school_within_200m": false,
+        "market_within_200m": true,
+        "transit_stop_within_100m": false,
+        "intersection_density": 6.9,
+        "posted_speed": 70,
+        "p85_speed": 64.0,
+        "aadt": 22442.0,
+        "ptw_share": 0.16,
+        "probe_count": 150,
+        "posted_speed_source": "adb",
+        "sign_conflict": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            71.63139,
+            34.02103
+          ],
+          [
+            71.63302,
+            34.01687
+          ]
+        ]
+      },
+      "properties": {
+        "segment_id": "psh_0025",
+        "road_name": "Circular Road West",
+        "city": "Peshawar",
+        "country": "PK",
+        "urban": true,
+        "lon": 71.63139,
+        "lat": 34.02103,
+        "length_m": 757.0,
+        "road_class": "residential",
+        "is_divided": false,
+        "has_footpath": false,
+        "school_within_200m": false,
+        "market_within_200m": false,
+        "transit_stop_within_100m": false,
+        "intersection_density": 7.0,
+        "posted_speed": 80,
+        "p85_speed": 101.0,
+        "aadt": 10668.0,
+        "ptw_share": 0.08,
+        "probe_count": 0,
+        "posted_speed_source": "osm",
+        "sign_conflict": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            71.48635,
+            33.98122
+          ],
+          [
+            71.48462,
+            33.98077
+          ]
+        ]
+      },
+      "properties": {
+        "segment_id": "psh_0026",
+        "road_name": "Model Town Rd",
+        "city": "Peshawar",
+        "country": "PK",
+        "urban": true,
+        "lon": 71.48635,
+        "lat": 33.98122,
+        "length_m": 639.0,
+        "road_class": "secondary",
+        "is_divided": false,
+        "has_footpath": true,
+        "school_within_200m": true,
+        "market_within_200m": true,
+        "transit_stop_within_100m": false,
+        "intersection_density": 0.9,
+        "posted_speed": 30,
+        "p85_speed": 22.0,
+        "aadt": 27090.0,
+        "ptw_share": 0.14,
+        "probe_count": 5,
+        "posted_speed_source": "osm",
+        "sign_conflict": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            71.50565,
+            34.06414
+          ],
+          [
+            71.50487,
+            34.06749
+          ]
+        ]
+      },
+      "properties": {
+        "segment_id": "psh_0027",
+        "road_name": "Shami Road",
+        "city": "Peshawar",
+        "country": "PK",
+        "urban": true,
+        "lon": 71.50565,
+        "lat": 34.06414,
+        "length_m": 811.0,
+        "road_class": "residential",
+        "is_divided": false,
+        "has_footpath": false,
+        "school_within_200m": false,
+        "market_within_200m": true,
+        "transit_stop_within_100m": false,
+        "intersection_density": 1.7,
+        "posted_speed": 30,
+        "p85_speed": 32.0,
+        "aadt": 34690.0,
+        "ptw_share": 0.07,
+        "probe_count": 2,
+        "posted_speed_source": "osm",
+        "sign_conflict": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            71.46042,
+            34.06423
+          ],
+          [
+            71.45766,
+            34.05992
+          ]
+        ]
+      },
+      "properties": {
+        "segment_id": "psh_0028",
+        "road_name": "Pir Zakori Road",
+        "city": "Peshawar",
+        "country": "PK",
+        "urban": true,
+        "lon": 71.46042,
+        "lat": 34.06423,
+        "length_m": 1444.0,
+        "road_class": "trunk",
+        "is_divided": true,
+        "has_footpath": false,
+        "school_within_200m": false,
+        "market_within_200m": true,
+        "transit_stop_within_100m": true,
+        "intersection_density": 3.4,
+        "posted_speed": 60,
+        "p85_speed": 66.0,
+        "aadt": 3940.0,
+        "ptw_share": 0.37,
+        "probe_count": 2,
+        "posted_speed_source": "osm",
+        "sign_conflict": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            71.45621,
+            33.97967
+          ],
+          [
+            71.4596,
+            33.98088
+          ]
+        ]
+      },
+      "properties": {
+        "segment_id": "psh_0029",
+        "road_name": "Gulbahar Chowk",
+        "city": "Peshawar",
+        "country": "PK",
+        "urban": true,
+        "lon": 71.45621,
+        "lat": 33.97967,
+        "length_m": 510.0,
+        "road_class": "secondary",
+        "is_divided": true,
+        "has_footpath": false,
+        "school_within_200m": false,
+        "market_within_200m": false,
+        "transit_stop_within_100m": false,
+        "intersection_density": 1.6,
+        "posted_speed": 60,
+        "p85_speed": 80.0,
+        "aadt": 7421.0,
+        "ptw_share": 0.05,
+        "probe_count": 150,
+        "posted_speed_source": "adb",
+        "sign_conflict": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            71.47288,
+            34.06373
+          ],
+          [
+            71.47253,
+            34.06129
+          ]
+        ]
+      },
+      "properties": {
+        "segment_id": "psh_0030",
+        "road_name": "Kotwali Road",
+        "city": "Peshawar",
+        "country": "PK",
+        "urban": true,
+        "lon": 71.47288,
+        "lat": 34.06373,
+        "length_m": 680.0,
+        "road_class": "trunk",
+        "is_divided": false,
+        "has_footpath": false,
+        "school_within_200m": false,
+        "market_within_200m": false,
+        "transit_stop_within_100m": false,
+        "intersection_density": 4.8,
+        "posted_speed": 60,
+        "p85_speed": 60.0,
+        "aadt": 23588.0,
+        "ptw_share": 0.27,
+        "probe_count": 80,
+        "posted_speed_source": "adb",
+        "sign_conflict": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            71.64275,
+            34.0362
+          ],
+          [
+            71.64553,
+            34.03284
+          ]
+        ]
+      },
+      "properties": {
+        "segment_id": "psh_0031",
+        "road_name": "Dalazak Road",
+        "city": "Peshawar",
+        "country": "PK",
+        "urban": true,
+        "lon": 71.64275,
+        "lat": 34.0362,
+        "length_m": 604.0,
+        "road_class": "trunk",
+        "is_divided": true,
+        "has_footpath": false,
+        "school_within_200m": false,
+        "market_within_200m": false,
+        "transit_stop_within_100m": true,
+        "intersection_density": 1.0,
+        "posted_speed": 40,
+        "p85_speed": null,
+        "aadt": null,
+        "ptw_share": 0.39,
+        "probe_count": 150,
+        "posted_speed_source": "adb",
+        "sign_conflict": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            71.63578,
+            34.0191
+          ],
+          [
+            71.63986,
+            34.01785
+          ]
+        ]
+      },
+      "properties": {
+        "segment_id": "psh_0032",
+        "road_name": "Hangu Road Seg",
+        "city": "Peshawar",
+        "country": "PK",
+        "urban": true,
+        "lon": 71.63578,
+        "lat": 34.0191,
+        "length_m": 1424.0,
+        "road_class": "residential",
+        "is_divided": true,
+        "has_footpath": false,
+        "school_within_200m": true,
+        "market_within_200m": false,
+        "transit_stop_within_100m": false,
+        "intersection_density": 4.8,
+        "posted_speed": 70,
+        "p85_speed": 93.0,
+        "aadt": 28931.0,
+        "ptw_share": 0.15,
+        "probe_count": 150,
+        "posted_speed_source": "adb",
+        "sign_conflict": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            71.56842,
+            34.04967
+          ],
+          [
+            71.56585,
+            34.05164
+          ]
+        ]
+      },
+      "properties": {
+        "segment_id": "psh_0033",
+        "road_name": "Nasir Bagh Road",
+        "city": "Peshawar",
+        "country": "PK",
+        "urban": true,
+        "lon": 71.56842,
+        "lat": 34.04967,
+        "length_m": 592.0,
+        "road_class": "primary",
+        "is_divided": true,
+        "has_footpath": false,
+        "school_within_200m": false,
+        "market_within_200m": false,
+        "transit_stop_within_100m": false,
+        "intersection_density": 3.5,
+        "posted_speed": 70,
+        "p85_speed": 63.0,
+        "aadt": 11343.0,
+        "ptw_share": 0.42,
+        "probe_count": 2,
+        "posted_speed_source": "osm",
+        "sign_conflict": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            71.61111,
+            34.04555
+          ],
+          [
+            71.61177,
+            34.04096
+          ]
+        ]
+      },
+      "properties": {
+        "segment_id": "psh_0034",
+        "road_name": "Islamia Road",
+        "city": "Peshawar",
+        "country": "PK",
+        "urban": true,
+        "lon": 71.61111,
+        "lat": 34.04555,
+        "length_m": 893.0,
+        "road_class": "trunk",
+        "is_divided": false,
+        "has_footpath": false,
+        "school_within_200m": true,
+        "market_within_200m": false,
+        "transit_stop_within_100m": false,
+        "intersection_density": 6.9,
+        "posted_speed": 80,
+        "p85_speed": 93.0,
+        "aadt": 37338.0,
+        "ptw_share": 0.09,
+        "probe_count": 5,
+        "posted_speed_source": "osm",
+        "sign_conflict": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            71.46379,
+            34.02771
+          ],
+          [
+            71.45892,
+            34.02691
+          ]
+        ]
+      },
+      "properties": {
+        "segment_id": "psh_0035",
+        "road_name": "Museum Road",
+        "city": "Peshawar",
+        "country": "PK",
+        "urban": true,
+        "lon": 71.46379,
+        "lat": 34.02771,
+        "length_m": 837.0,
+        "road_class": "secondary",
+        "is_divided": false,
+        "has_footpath": false,
+        "school_within_200m": false,
+        "market_within_200m": true,
+        "transit_stop_within_100m": true,
+        "intersection_density": 5.2,
+        "posted_speed": 40,
+        "p85_speed": 60.0,
+        "aadt": 10794.0,
+        "ptw_share": 0.41,
+        "probe_count": 0,
+        "posted_speed_source": "osm",
+        "sign_conflict": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            71.52244,
+            34.05699
+          ],
+          [
+            71.52204,
+            34.05352
+          ]
+        ]
+      },
+      "properties": {
+        "segment_id": "psh_0036",
+        "road_name": "Services Hospital Rd",
+        "city": "Peshawar",
+        "country": "PK",
+        "urban": true,
+        "lon": 71.52244,
+        "lat": 34.05699,
+        "length_m": 429.0,
+        "road_class": "tertiary",
+        "is_divided": true,
+        "has_footpath": false,
+        "school_within_200m": true,
+        "market_within_200m": true,
+        "transit_stop_within_100m": false,
+        "intersection_density": 1.6,
+        "posted_speed": 60,
+        "p85_speed": 65.0,
+        "aadt": null,
+        "ptw_share": 0.08,
+        "probe_count": 5,
+        "posted_speed_source": "osm",
+        "sign_conflict": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            71.58009,
+            34.02391
+          ],
+          [
+            71.58429,
+            34.02666
+          ]
+        ]
+      },
+      "properties": {
+        "segment_id": "psh_0037",
+        "road_name": "Arbab Road",
+        "city": "Peshawar",
+        "country": "PK",
+        "urban": true,
+        "lon": 71.58009,
+        "lat": 34.02391,
+        "length_m": 804.0,
+        "road_class": "tertiary",
+        "is_divided": false,
+        "has_footpath": false,
+        "school_within_200m": false,
+        "market_within_200m": true,
+        "transit_stop_within_100m": true,
+        "intersection_density": 2.9,
+        "posted_speed": 30,
+        "p85_speed": 27.0,
+        "aadt": 5009.0,
+        "ptw_share": 0.36,
+        "probe_count": 150,
+        "posted_speed_source": "adb",
+        "sign_conflict": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            71.56849,
+            33.98868
+          ],
+          [
+            71.56594,
+            33.99303
+          ]
+        ]
+      },
+      "properties": {
+        "segment_id": "psh_0038",
+        "road_name": "Khanjee Road",
+        "city": "Peshawar",
+        "country": "PK",
+        "urban": true,
+        "lon": 71.56849,
+        "lat": 33.98868,
+        "length_m": 563.0,
+        "road_class": "secondary",
+        "is_divided": false,
+        "has_footpath": false,
+        "school_within_200m": false,
+        "market_within_200m": true,
+        "transit_stop_within_100m": true,
+        "intersection_density": 6.2,
+        "posted_speed": 30,
+        "p85_speed": 52.0,
+        "aadt": 17057.0,
+        "ptw_share": 0.32,
+        "probe_count": 15,
+        "posted_speed_source": "adb",
+        "sign_conflict": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            71.6001,
+            34.01838
+          ],
+          [
+            71.60178,
+            34.01674
+          ]
+        ]
+      },
+      "properties": {
+        "segment_id": "psh_0039",
+        "road_name": "Kacha Garhi Rd",
+        "city": "Peshawar",
+        "country": "PK",
+        "urban": true,
+        "lon": 71.6001,
+        "lat": 34.01838,
+        "length_m": 843.0,
+        "road_class": "secondary",
+        "is_divided": false,
+        "has_footpath": false,
+        "school_within_200m": true,
+        "market_within_200m": false,
+        "transit_stop_within_100m": false,
+        "intersection_density": 1.8,
+        "posted_speed": 60,
+        "p85_speed": 79.0,
+        "aadt": 9694.0,
+        "ptw_share": 0.31,
+        "probe_count": 150,
+        "posted_speed_source": "adb",
+        "sign_conflict": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            71.54751,
+            33.99258
+          ],
+          [
+            71.54509,
+            33.99038
+          ]
+        ]
+      },
+      "properties": {
+        "segment_id": "psh_0040",
+        "road_name": "Matni Road",
+        "city": "Peshawar",
+        "country": "PK",
+        "urban": true,
+        "lon": 71.54751,
+        "lat": 33.99258,
+        "length_m": 975.0,
+        "road_class": "residential",
+        "is_divided": false,
+        "has_footpath": false,
+        "school_within_200m": false,
+        "market_within_200m": true,
+        "transit_stop_within_100m": false,
+        "intersection_density": 4.9,
+        "posted_speed": 70,
+        "p85_speed": 61.0,
+        "aadt": 11187.0,
+        "ptw_share": 0.28,
+        "probe_count": 40,
+        "posted_speed_source": "adb",
+        "sign_conflict": false
+      }
+    }
+  ]
+}

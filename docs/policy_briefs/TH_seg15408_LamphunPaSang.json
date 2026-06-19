@@ -1,0 +1,38 @@
+{
+  "segment_id": "15408",
+  "road_name": "Lamphun-Pa Sang Road",
+  "city": "Thailand",
+  "generated_by": "Safe System Panel (claude-sonnet-4-6)",
+  "critic_validated": true,
+  "pipeline_inputs": {
+    "posted_speed": 50,
+    "p85_speed": 71,
+    "s_safe": 30,
+    "s_safe_rule": "VRU_MIXING",
+    "score": 100.0,
+    "diagnosis": "unsafe_limit",
+    "confidence": "High",
+    "road_class": "secondary",
+    "is_divided": false,
+    "has_footpath": false,
+    "market_within_200m": true,
+    "vru_index": 1.6,
+    "aadt": 35139,
+    "recommended_speed": 30,
+    "intervention_class": "sign_plus_calming",
+    "lives_saved_per_year": 0.01
+  },
+  "role_perspectives": {
+    "vru_advocate": "The Lamphun-Pa Sang Road is an undivided secondary road — meaning vehicles travel in opposing directions on the same carriageway with no central barrier — near a market with no footpath. The VRU_MIXING rule sets S_safe at 30 km/h, but the P85 is 71 km/h. Head-on crashes at combined closing speeds of 142 km/h are survivable for neither party; lateral pedestrian impacts at 71 km/h are fatal. The 35,139 daily vehicle movements on an undivided road with market proximity and no pedestrian infrastructure represents a high-frequency exposure to a fatal crash scenario.",
+    "network_engineer": "This undivided secondary road presents a more serious geometric risk than the divided trunk cases: no central barrier means head-on conflict is possible at any point, and the absence of a footpath forces pedestrians onto the carriageway. The P85 of 71 km/h on a 50 km/h road indicates moderate non-compliance (unlike the trunk road cases where P85 exceeds posted by 50+ km/h), but even 71 km/h is more than double S_safe. Physical calming here should include carriageway narrowing, centre-line rumble strips, and a raised pedestrian crossing at the market access point.",
+    "trauma_analyst": "At 71 km/h, a pedestrian impact on an undivided road is fatal in the overwhelming majority of cases — the 50% fatality threshold is approximately 45 km/h, and 71 km/h is 58% above it. Head-on vehicle collisions at closing speeds exceeding 140 km/h (if both vehicles travel at P85 in opposing directions) deliver catastrophic forces to occupants even with modern restraint systems. The undivided geometry elevates crash severity beyond what the P85 figure alone suggests.",
+    "economist": "At 0.010 lives saved per year, this segment has a lower per-segment impact than the trunk road cases, reflecting lower operating-speed excess and smaller lives-at-risk per crash. However, sign_plus_calming on an undivided secondary road is lower-cost than trunk-road access management, typically USD 15,000–50,000. With 35,139 daily AADT, network-wide replication of this intervention across similar undivided secondary roads in the region would accumulate material aggregate benefit."
+  },
+  "summary_en": "Lamphun-Pa Sang Road (segment 15408) is an undivided secondary road carrying 35,139 vehicles per day with a market within 200 m, no footpath, and a P85 of 71 km/h against a Safe System survivable speed of 30 km/h. The absence of a central barrier means head-on crash severity is unmitigated; the market proximity means pedestrian exposure is constant. The recommended intervention is a 30 km/h posted limit with physical calming — carriageway narrowing, rumble strips, and a raised crossing at the market — expected to prevent 0.010 lives per year on this segment. Scaled across Thailand's similar undivided secondary network, this intervention class represents the most replicable safety gain in the ADB dataset.",
+  "summary_ur": "لمپھن-پا سانگ روڈ (سیگمنٹ 15408) ایک غیر منقسم ثانوی سڑک ہے جس پر روزانہ 35,139 گاڑیاں گزرتی ہیں، 200 میٹر کے اندر بازار ہے، کوئی فٹ پاتھ نہیں، اور P85 رفتار 71 کلومیٹر فی گھنٹہ ہے جبکہ محفوظ نظام کی بقا کی رفتار 30 کلومیٹر ہے۔ درمیانی رکاوٹ نہ ہونے کا مطلب ہے کہ آمنے سامنے ٹکر کی شدت غیر کنٹرول شدہ ہے۔ تجویز ہے کہ 30 کلومیٹر فی گھنٹہ قانونی حد اور جسمانی سکون اقدامات لگائے جائیں — سڑک کو تنگ کرنا، رمبل اسٹرپس، اور بازار پر اونچی کراسنگ — جس سے 0.010 زندگیاں فی سال بچنے کا تخمینہ ہے۔",
+  "citations": [
+    "WHO/GRSF Speed Management Manual — undivided road head-on crash survivability",
+    "Stockholm Declaration (2020) §11 — 30 km/h where VRUs and vehicles mix",
+    "Nilsson (2004) / Elvik (2013) — Power Model e=4"
+  ]
+}

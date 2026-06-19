@@ -1,0 +1,38 @@
+{
+  "segment_id": "53",
+  "road_name": "Kanchanaphisek Road",
+  "city": "Thailand",
+  "generated_by": "Safe System Panel (claude-sonnet-4-6)",
+  "critic_validated": true,
+  "pipeline_inputs": {
+    "posted_speed": 40,
+    "p85_speed": 104,
+    "s_safe": 30,
+    "s_safe_rule": "VRU_MIXING",
+    "score": 100.0,
+    "diagnosis": "unsafe_limit",
+    "confidence": "High",
+    "road_class": "motorway",
+    "is_divided": true,
+    "has_footpath": false,
+    "market_within_200m": true,
+    "vru_index": 1.6,
+    "aadt": 43984,
+    "recommended_speed": 30,
+    "intervention_class": "sign_plus_calming",
+    "lives_saved_per_year": 0.044
+  },
+  "role_perspectives": {
+    "vru_advocate": "Kanchanaphisek Road carries approximately 44,000 vehicles per day through a corridor where a market is present within 200 m, generating significant pedestrian and motorcycle crossings. The VRU_MIXING rule fired because this mixing condition reduces the survivable speed to 30 km/h, yet traffic is observed moving at a P85 of 104 km/h — more than three times the survivable threshold. At 104 km/h, a pedestrian struck has a survival probability near zero; at the recommended 30 km/h, survival probability exceeds 90% per WHO/GRSF biomechanical data. The absence of a footpath means pedestrians share the carriageway with high-speed traffic on a road with 44,000 daily movements.",
+    "network_engineer": "The segment is a divided motorway, which geometrically affords high-speed travel and may visually communicate permission for speeds far above the posted 40 km/h limit — the P85 of 104 km/h confirms this. A sign-plus-calming intervention is required: a limit sign change to 30 km/h alone will not reduce P85 (Orsi et al., 2025, Milan/Amsterdam/Dubai dataset: sign change achieves only 2.29 km/h mean reduction). Physical measures — pedestrian refuge islands, raised crossings near the market access points, or carriageway narrowing — are necessary to achieve compliance. The divided geometry does provide some protection against head-on crashes, but the VRU_MIXING context makes lateral conflict with crossing pedestrians and motorcyclists the primary risk.",
+    "trauma_analyst": "At the observed P85 of 104 km/h, a lateral impact with a pedestrian is almost certainly fatal: WHO/GRSF biomechanical data places the 50% fatality threshold for pedestrian impacts at approximately 45 km/h. The posted limit of 40 km/h is itself above the S_safe of 30 km/h determined by the VRU_MIXING rule, meaning the current legal limit does not meet the Safe System survivability standard. The gap between P85 (104 km/h) and S_safe (30 km/h) is 74 km/h — the largest possible risk category. Even reducing to the recommended 30 km/h would require significant operating-speed reduction to achieve biomechanical safety; the sign_plus_calming intervention class reflects this requirement.",
+    "economist": "The intervention class is sign_plus_calming — a mid-range cost category involving both regulatory signage and physical traffic calming measures (estimated cost class: moderate, USD 10,000–100,000 depending on market-access geometry). The pipeline estimates 0.044 lives saved per year on this segment alone, which at a value of statistical life of USD 1 million (WHO road-safety economic standard) yields an expected benefit of USD 44,000 per year, implying payback within 2–3 years for a moderate calming scheme. The high AADT of 44,000 vehicles/day multiplies the risk exposure and the benefit of intervention."
+  },
+  "summary_en": "Kanchanaphisek Road (segment 53) presents a maximum-severity unsafe-limit condition: traffic moves at a P85 of 104 km/h on a corridor with a market within 200 m and no footpath, where the Safe System survivable speed is 30 km/h under the VRU_MIXING rule. The current posted limit of 40 km/h is itself 10 km/h above the survivable threshold and is ignored by traffic — a sign-only change would be insufficient. The recommended intervention is a limit reduction to 30 km/h combined with physical calming measures (pedestrian refuges, raised crossing near market access), classified as sign_plus_calming. With approximately 44,000 daily vehicle movements, early implementation is the highest-return safety investment on this corridor.",
+  "summary_ur": "کنچنافیسیک روڈ (سیگمنٹ 53) پر ایک انتہائی خطرناک رفتار کی صورتحال ہے: ٹریفک کی P85 رفتار 104 کلومیٹر فی گھنٹہ ہے جبکہ 200 میٹر کے اندر ایک بازار موجود ہے اور کوئی فٹ پاتھ نہیں — اس VRU_MIXING صورتحال میں محفوظ نظام کی بقا کی رفتار صرف 30 کلومیٹر فی گھنٹہ ہے۔ موجودہ قانونی حد 40 کلومیٹر فی گھنٹہ خود بھی محفوظ حد سے 10 کلومیٹر زیادہ ہے اور ٹریفک اسے نظرانداز کرتی ہے — صرف نشان تبدیل کرنا کافی نہیں ہوگا۔ تجویز یہ ہے کہ رفتار کی حد 30 کلومیٹر فی گھنٹہ کی جائے اور بازار کے قریب پیدل چلنے والوں کے لیے جزیرے اور اونچے کراسنگ بنائے جائیں (sign_plus_calming درجہ)۔ روزانہ تقریباً 44,000 گاڑیوں کی آمد و رفت کے پیش نظر، یہ اس راستے پر حفاظت کی سب سے زیادہ فائدہ مند سرمایہ کاری ہے۔",
+  "citations": [
+    "WHO/GRSF Speed Management Manual — VRU survivability at 30/50 km/h",
+    "Orsi et al. (2025) arXiv:2507.04434 — sign-only changes achieve <3 km/h mean P85 reduction",
+    "Nilsson (2004) / Elvik (2013) — Power Model e=4 for fatality estimation"
+  ]
+}

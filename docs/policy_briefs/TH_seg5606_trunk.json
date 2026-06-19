@@ -1,0 +1,38 @@
+{
+  "segment_id": "5606",
+  "road_name": "Trunk Road (central Thailand)",
+  "city": "Thailand",
+  "generated_by": "Safe System Panel (claude-sonnet-4-6)",
+  "critic_validated": true,
+  "pipeline_inputs": {
+    "posted_speed": 50,
+    "p85_speed": 107,
+    "s_safe": 30,
+    "s_safe_rule": "VRU_MIXING",
+    "score": 100.0,
+    "diagnosis": "unsafe_limit",
+    "confidence": "High",
+    "road_class": "trunk",
+    "is_divided": true,
+    "has_footpath": false,
+    "market_within_200m": true,
+    "vru_index": 1.6,
+    "aadt": 39876,
+    "recommended_speed": 30,
+    "intervention_class": "sign_plus_calming",
+    "lives_saved_per_year": 0.057
+  },
+  "role_perspectives": {
+    "vru_advocate": "This trunk road carries 39,876 vehicles per day past a market within 200 m — a condition that generates repeated pedestrian crossings, motorcycle stopping movements, and informal vendor activity on or near the carriageway. The VRU_MIXING rule sets S_safe at 30 km/h, but traffic moves at a P85 of 107 km/h and the posted limit is 50 km/h. Both the limit and the operating speed are incompatible with the presence of vulnerable road users at this location. The absence of a footpath means every pedestrian accessing the market must interact directly with 107 km/h traffic.",
+    "network_engineer": "The divided trunk geometry invites high operating speeds — the P85 of 107 km/h on a 50 km/h posted road confirms that the road's design speed far exceeds its regulatory speed. A sign_plus_calming intervention is needed: market proximity warrants a service road or setback access point, combined with speed tables or chicanes that physically enforce 30 km/h approach speeds to the market zone. The 57 m of excess speed (P85 minus S_safe = 77 km/h) cannot be corrected by signage alone.",
+    "trauma_analyst": "At a P85 of 107 km/h, the kinetic energy delivered to a pedestrian is approximately 13 times that at 30 km/h (energy scales as v²). No human body survives lateral impact at 107 km/h. The posted limit of 50 km/h is itself above the VRU_MIXING S_safe of 30 km/h, meaning this road is legally sanctioned to operate at a speed that cannot protect pedestrians in a foreseeable crash. The 77 km/h gap between P85 and S_safe places this segment in the highest-risk tier of the network.",
+    "economist": "At 0.057 lives saved per year, this segment's intervention would prevent one fatality approximately every 17.5 years. At a value of statistical life of USD 1 million, the expected annual benefit is USD 57,000. A sign_plus_calming intervention at a market-adjacent trunk road is estimated at USD 50,000–150,000 capital cost, with a simple payback of 1–3 years — highly cost-effective by international road-safety investment standards. The AADT of 39,876 amplifies both the risk and the benefit scale."
+  },
+  "summary_en": "This trunk road (segment 5606) in central Thailand operates at a P85 of 107 km/h — more than three times the Safe System survivable speed of 30 km/h — on a divided carriageway where a market within 200 m generates constant pedestrian and motorcycle interaction with no footpath protection. The posted limit of 50 km/h is itself non-compliant with the VRU_MIXING S_safe of 30 km/h. The recommended intervention is a reduction to 30 km/h combined with physical traffic calming at the market access point (sign_plus_calming class), estimated to prevent 0.057 lives per year. Signage alone will not achieve operating-speed compliance on this geometry.",
+  "summary_ur": "تھائی لینڈ میں یہ ٹرنک روڈ (سیگمنٹ 5606) P85 رفتار 107 کلومیٹر فی گھنٹہ پر چل رہی ہے — جو محفوظ نظام کی بقا کی رفتار 30 کلومیٹر فی گھنٹہ سے تین گنا سے زیادہ ہے — اور 200 میٹر کے اندر ایک بازار موجود ہے جہاں پیدل چلنے والوں اور موٹرسائیکل سواروں کا مسلسل آنا جانا ہے اور کوئی فٹ پاتھ نہیں۔ موجودہ قانونی حد 50 کلومیٹر فی گھنٹہ بھی VRU_MIXING کے S_safe 30 کلومیٹر کے مطابق نہیں ہے۔ تجویز یہ ہے کہ رفتار کی حد 30 کلومیٹر فی گھنٹہ کی جائے اور بازار کے داخلی مقام پر جسمانی ٹریفک سکون اقدامات کیے جائیں (sign_plus_calming)، جس سے ہر سال تقریباً 0.057 زندگیاں بچنے کا تخمینہ ہے۔ صرف نشان لگانا اس سڑک کی ساخت پر رفتار کو کم نہیں کرے گا۔",
+  "citations": [
+    "WHO/GRSF Speed Management Manual — VRU survivability thresholds",
+    "Orsi et al. (2025) arXiv:2507.04434 — physical redesign required for P85 reduction",
+    "Nilsson (2004) / Elvik (2013) — Power Model e=4"
+  ]
+}

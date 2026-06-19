@@ -1,0 +1,28 @@
+{
+  "total_segments": 69966,
+  "diagnosis_distribution": {
+    "safe": 27687,
+    "non_credible_limit": 1969,
+    "unsafe_limit": 40310
+  },
+  "unsafe_limit_pct": 57.6,
+  "estimated_lives_saved_per_year": 1636.22,
+  "high_priority_threshold": 15.0,
+  "high_priority_segments": 7766,
+  "per_city": {
+    "Maharashtra": {
+      "total": 14082,
+      "unsafe_limit": 791,
+      "non_credible_limit": 1242,
+      "high_priority": 365,
+      "lives_saved_per_year": 98.56
+    },
+    "Thailand": {
+      "total": 55884,
+      "unsafe_limit": 39519,
+      "non_credible_limit": 727,
+      "high_priority": 7401,
+      "lives_saved_per_year": 1537.66
+    }
+  }
+}
